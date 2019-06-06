@@ -1,0 +1,24 @@
+server: "hub-cloud.browserstack.com"
+user: "philipp127"
+key: "vJwJsjXGMKeQw6vDus5x"
+
+common_caps:
+  "browserstack.local": true
+  "browserstack.debug": true # Visual log
+  "acceptSslCerts": true # allow self signed certificates
+  "name": "Bstack-[Capybara] Local Test"
+
+browser_caps:
+  -
+    "browser": "IE"
+    "browser_version": "11.0"
+    "os": "Windows"
+    "os_version": "7"
+  -
+    "browser": "safari"
+    "browser_version": "12.0"
+  -
+    "browser": "chrome"
+    "os": "Linux"
+
+#curl -u "philipp127:vJwJsjXGMKeQw6vDus5x" -X PUT -H "Content-Type: application/json" -d "{\"status\":\"<new-status>\", \"reason\":\"<reason text>\"}" https://api.browserstack.com/automate/sessions/<session-id>.json
