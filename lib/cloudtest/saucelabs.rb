@@ -31,9 +31,15 @@ module Cloudtest
       @caps['os'] = ENV['CLOUDTEST_OS'] || '10'
       @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
       @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
+      if CONFIG.has_key?('common_caps')
+        @caps = @caps.merge(CONFIG['common_caps'])
+      end
+      if CONFIG.has_key?('browser_caps')
+        @caps= @caps.merge(CONFIG['browser_caps'])
+      end
 
-      @caps = @caps.merge(CONFIG['common_caps'].merge(CONFIG['browser_caps'][0]))
-
+      puts 'starting saucelabs tunnel..'
+       # inpsire solution by browserstack for starting the tunnel `bin/saucelabs_tunnel -u 7kQU -k 9eee597f-4615-4d10-b9a8-706fb7e75974`
       Cloudtest::Cloudtest_Core.register_driver(@caps, CONFIG['user'], CONFIG['key'], SERVER)
     end
 

@@ -1,5 +1,5 @@
 require 'selenium/webdriver'
-require 'capybara'
+#require 'capybara'
 require 'yaml'
 
 class Capybara::Selenium::Driver < Capybara::Driver::Base
@@ -15,7 +15,7 @@ module Cloudtest
     def self.enabled
       en = ENV['CLOUDTEST'] == 'true' || ENV['CLOUDTEST'] == '1'
       if en
-        puts 'You have enabled CloutTest!'
+        puts 'You have enabled CloudTest1!'
       else
         puts 'To enable CloutTest please set the CLOUDTEST env variable to ´true´.'
       end
@@ -24,9 +24,13 @@ module Cloudtest
 
     def self.load_config
       config = Hash.new
+      path = `pwd`.to_s.gsub(/\s+/, "") + "/config/#{CONFIG_NAME}.config.yml"
       begin
-        config = YAML.load(File.read(File.join(File.dirname(__FILE__), "../../config/#{CONFIG_NAME}.config.yml")))
+        file = File.read(path)
+        config = YAML.load(file)
+        puts config
       rescue
+        puts 'Error: no config file found at: ' + path
         puts 'Error: I need a config yml file, named ENV["CONFIG_NAME"] or "cloudtest.config.yml" which has at least a "user" and and "key" pair, thank you!'
       else
         if config.has_key?('user') && config.has_key?('key')
@@ -39,18 +43,16 @@ module Cloudtest
 
     def self.register_driver(capsArray, user, key, server)
       Capybara.register_driver :cloudtest do |app|
-
         Capybara::Selenium::Driver.new(app,
                                        :browser => :remote,
                                        :url => "https://#{user}:#{key}@#{server}",
                                        :desired_capabilities => capsArray
         )
-        Before do
-          Capybara.current_driver = :cloudtest
-          Capybara.default_driver = :cloudtest
-        end
-
       end
+      puts 'Capybara default driver was: ' + Capybara.default_driver.to_s
+      Capybara.default_driver = :cloudtest
+      puts 'Capybara default driver is now: ' + Capybara.default_driver.to_s
+
     end
 
     def self.list_caps
