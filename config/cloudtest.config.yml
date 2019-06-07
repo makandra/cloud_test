@@ -14,11 +14,6 @@ browser_caps:
     "browser_version": "11.0"
     "os": "Windows"
     "os_version": "7"
-  -
-    "browser": "safari"
-    "browser_version": "12.0"
-  -
-    "browser": "chrome"
-    "os": "Linux"
 
+#
 #curl -u "philipp127:vJwJsjXGMKeQw6vDus5x" -X PUT -H "Content-Type: application/json" -d "{\"status\":\"<new-status>\", \"reason\":\"<reason text>\"}" https://api.browserstack.com/automate/sessions/<session-id>.json
