@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba10d9fe-50b5-4688-be97-47b2a6a66165" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/cloudtest.config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/cloudtest.config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/cloudtest.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/core.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/core.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/cloudtest_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/cloudtest_test.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/cloudtest.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            <state relative-caret-position="51">
+              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -40,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/cloudtest_test.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+            <state relative-caret-position="595">
+              <caret line="35" column="144" selection-start-line="35" selection-start-column="144" selection-end-line="35" selection-end-column="144" />
             </state>
           </provider>
         </entry>
@@ -74,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+            <state relative-caret-position="612">
+              <caret line="36" column="7" lean-forward="true" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -128,12 +122,12 @@
       <list>
         <option value="$PROJECT_DIR$/cloudtest.gemspec" />
         <option value="$PROJECT_DIR$/config/cloudtest.config.yml" />
-        <option value="$PROJECT_DIR$/lib/cloudtest.rb" />
-        <option value="$PROJECT_DIR$/test/cloudtest_test.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/core.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" />
+        <option value="$PROJECT_DIR$/test/cloudtest_test.rb" />
+        <option value="$PROJECT_DIR$/lib/cloudtest.rb" />
       </list>
     </option>
   </component>
@@ -377,7 +371,7 @@
       <updated>1559829016850</updated>
       <workItem from="1559829018374" duration="5294000" />
       <workItem from="1559892299618" duration="6494000" />
-      <workItem from="1559900785001" duration="3406000" />
+      <workItem from="1559900785001" duration="3480000" />
     </task>
     <servers />
   </component>
@@ -414,7 +408,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15194000" />
+    <option name="totallyTimeSpent" value="15268000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="28" width="1914" height="1144" extended-state="0" />
@@ -504,24 +498,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/cloudtest.config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/cloudtest_test.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -548,8 +528,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        <state relative-caret-position="612">
+          <caret line="36" column="7" lean-forward="true" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/cloudtest_test.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="144" selection-start-line="35" selection-start-column="144" selection-end-line="35" selection-end-column="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
         </state>
       </provider>
     </entry>

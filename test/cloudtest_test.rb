@@ -33,7 +33,7 @@ class CloudtestTest < Minitest::Test
   end
 
   def test_caps_lambdatest
-    assert_output(/You can find a caps generator here: https:\/\/www.lambdatest.com\/capabilities-generator\//){::Cloudtest::Lambdatest.list_caps}
+    assert_output(/You can find a caps generator here: https:\/\/www.lambdatest.com\/capabilities-generator\//){::Cloudtest::Crossbrowsertesting.list_caps}
   end
 
   def test_get_all_caps_lambdatest
