@@ -17,7 +17,7 @@ module Cloudtest
       @caps['webStorageEnabled'] = 'true'
       @caps['acceptSslCerts'] = 'true'
 
-      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || `pwd`
+      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1]
       @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
       @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
 

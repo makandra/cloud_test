@@ -37,7 +37,7 @@ class CloudtestTest < Minitest::Test
   end
 
   def test_get_all_caps_lambdatest
-    ::Cloudtest::Lambdatest.get_all_caps
+    ::Cloudtest::Crossbrowsertesting.get_all_caps
   end
 
 

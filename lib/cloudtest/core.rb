@@ -54,14 +54,20 @@ module Cloudtest
     end
 
     def self.list_caps
-      puts 'You can configure all the env variables below:\n' +
-               "ENV['CLOUDTEST_PROJECT'] || `pwd`
+      puts 'You can configure all the env variables below:' + """\nENV['CLOUDTEST_PROJECT'] || `pwd`
       ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
       ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
       ENV['CLOUDTEST_OS'] || '10'
       ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
-      ENV['CLOUDTEST_BROWSER'] || 'CHROME'"
+      ENV['CLOUDTEST_BROWSER'] || 'CHROME'"""
       puts 'Please add additional capabilities in the cloudtest.config.yml file'
     end
+
+    def self.list_these_caps(caps)
+      caps.each do |key, value|
+        puts "|#{key.to_s.ljust(25)}|#{value.to_s.ljust(44)}|\n"
+      end
+    end
+
   end
 end

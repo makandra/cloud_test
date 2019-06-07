@@ -16,7 +16,7 @@ module Cloudtest
       SERVER = "hub-cloud.browserstack.com/wd/hub"
 
 
-      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || `pwd`
+      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1]
       @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
       @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
 
@@ -48,6 +48,10 @@ module Cloudtest
     def list_caps
       Cloudtest::Cloudtest_Core.list_caps
       puts 'you can generate capabilities here https://www.browserstack.com/automate/capabilities?tag=selenium-4'
+    end
+
+    def self.get_all_caps
+      puts @caps
     end
   end
 end
