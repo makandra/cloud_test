@@ -2,14 +2,14 @@ module Cloudtest
 
   class Crossbrowsertesting
     if Cloudtest::Cloudtest_Core.enabled
-
+      Capybara.app_host = 'http://local:80'
       puts 'Running features on crossbrowsertesting.com'
 
       TASK_ID = (ENV['TASK_ID'] || 0).to_i
 
       CONFIG = Cloudtest::Cloudtest_Core.load_config
-      CONFIG['user'] = ENV['LT_USERNAME'] || CONFIG['user']
-      CONFIG['key'] = ENV['LT_ACCESS_KEY'] || CONFIG['key']
+      CONFIG['user'] = ENV['CBT_USERNAME'] || CONFIG['user']
+      CONFIG['key'] = ENV['CBT_ACCESS_KEY'] || CONFIG['key']
       SERVER = 'hub.crossbrowsertesting.com/wd/hub'
       @caps = Hash.new
       @caps['max_duration'] = '1200'

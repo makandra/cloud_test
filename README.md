@@ -1,8 +1,13 @@
 # Cloudtest
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cloudtest`. To experiment with that code, run `bin/console` for an interactive prompt.
+Cloudtest enables local Cloud-Testing for a number of providers:
+- Browserstack
+- CrossBrowserTesting
+- saucelabs
+- lambdatest
 
-TODO: Delete this and the text above, and describe your gem
+The intention of this gem is to quickly enable Cloud-Testing with minimal setup required.
+It assumes your are using capybara and selenium.
 
 ## Installation
 
@@ -19,10 +24,70 @@ And then execute:
 Or install it yourself as:
 
     $ gem install cloudtest
+##Configuration
+You can choose between 
 
+a) a cloudtest.config.yml file in the config directory
+
+
+b) ENV variables
+
+In either case they need to include a 'key' and a 'user' value (login for the chosen provider).
+ Additional key/value pairs are possible, for example to configure the browser.
+
+- [Browserstack Configurator](https://www.browserstack.com/automate/capabilities)
+- [CrossBrowserTesting Capabilities](https://help.crossbrowsertesting.com/selenium-testing/getting-started/crossbrowsertesting-automation-capabilities/)
+- [Saucelabs Configurator](https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/)
+- [lambdatest Capability Generator](https://www.lambdatest.com/capabilities-generator/)
+
+Example cloudtest.config.yml:
+
+
+    common_caps:
+      "browserstack.local": true
+      "browserstack.debug": true # Visual log
+      "acceptSslCerts": true # allow self signed certificates
+      "name": "Bstack-[Capybara] Local Test"
+      'resolution' : '1280x1024'
+    
+    browser_caps:
+      -
+        "browser": "IE"
+        "browser_version": "11.0"
+        "os": "Windows"
+        "os_version": "7"
+
+And these are the defaults and possible env variable settings:
+
+    ENV['CLOUDTEST_PROJECT'] || # folder name
+    ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
+    ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
+    ENV['CLOUDTEST_OS'] || '10'
+    ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
+    ENV['CLOUDTEST_BROWSER'] || 'CHROME'
+          
 ## Usage
 
-TODO: Write usage instructions here
+You need to run the specific tunnel app for each provider in order to setup the local tunnel.
+Links:
+
+- Browserstack [tunnel](https://s3.amazonaws.com/browserStack/browserstack-local/BrowserStackLocal-linux-x64) 
+should be installed as a gem, so add gem 'browserstack-local' to your gemfile
+- [CrossBrowserTesting tunnel](https://github.com/crossbrowsertesting/cbt-tunnel-nodejs/releases)
+- [Saucelabs tunnel](https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Connect+Proxy)
+- [Lambdatest tunnel](https://s3.amazonaws.com/lambda-tunnel/LT_Linux.zip)
+
+
+To enable Cloud-Testing you need to set the ENV['CLOUDTEST'] variable to 1 or true. 
+
+    export CLOUDTEST=1
+Additionally you need to require the corresponding provider and set the capybara driver as follows:
+
+    require 'cloudtest/browserstack'
+ 
+    Before do
+      Capybara.current_driver = :cloudtest
+    end
 
 ## Development
 

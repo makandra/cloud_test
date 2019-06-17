@@ -7,7 +7,8 @@ module Cloudtest
       begin
         require 'browserstack/local'
       rescue LoadError
-        puts 'Please do a gem install browserstack-local !'
+        puts 'Please add gem "browserstack-local" to your gemfile!'
+        raise LoadError
       end
       CONFIG = Cloudtest::Cloudtest_Core.load_config
 
@@ -15,6 +16,7 @@ module Cloudtest
       CONFIG['key'] = ENV['BROWSERSTACK_ACCESS_KEY'] || CONFIG['key']
       SERVER = "hub-cloud.browserstack.com/wd/hub"
 
+      @caps = Hash.new
 
       @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1]
       @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
@@ -30,7 +32,8 @@ module Cloudtest
       @caps["acceptSslCerts"] = true # allow self signed certificates
 
       @caps = Cloudtest::Cloudtest_Core.merge_caps(@caps, CONFIG)
-
+      Capybara.app_host = "http://127.0.0.1:45691"
+      Capybara.server_port = 45691
 
 
       # Code to start browserstack local before start of test

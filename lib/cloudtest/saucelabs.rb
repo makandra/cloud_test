@@ -7,8 +7,8 @@ module Cloudtest
       TASK_ID = (ENV['TASK_ID'] || 0).to_i
 
       CONFIG = Cloudtest::Cloudtest_Core.load_config
-      CONFIG['user'] = ENV['LT_USERNAME'] || CONFIG['user']
-      CONFIG['key'] = ENV['LT_ACCESS_KEY'] || CONFIG['key']
+      CONFIG['user'] = ENV['SL_USERNAME'] || CONFIG['user']
+      CONFIG['key'] = ENV['SL_ACCESS_KEY'] || CONFIG['key']
       SERVER = 'ondemand.saucelabs.com:443/wd/hub'
       @caps = Hash.new
       @caps['record_video'] = 'true'
