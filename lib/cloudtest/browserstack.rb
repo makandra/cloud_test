@@ -29,7 +29,7 @@ module Cloudtest
       @caps["browserstack.debug"] = true # Visual log
       @caps["acceptSslCerts"] = true # allow self signed certificates
 
-      @caps = @caps.merge(CONFIG['common_caps'].merge(CONFIG['browser_caps'][0]))
+      @caps = Cloudtest::Cloudtest_Core.merge_caps(@caps, CONFIG)
 
 
 

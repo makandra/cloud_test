@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ba10d9fe-50b5-4688-be97-47b2a6a66165" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/core.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/core.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/saucelabs.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/saucelabs.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cloudtest/version.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/version.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +26,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/cloudtest/browserstack.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+            <state relative-caret-position="544">
+              <caret line="32" selection-start-line="32" selection-end-line="32" />
             </state>
           </provider>
         </entry>
@@ -137,13 +134,13 @@
         <option value="$PROJECT_DIR$/cloudtest.gemspec" />
         <option value="$PROJECT_DIR$/config/cloudtest.config.yml" />
         <option value="$PROJECT_DIR$/test/cloudtest_test.rb" />
-        <option value="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest.rb" />
-        <option value="$PROJECT_DIR$/lib/cloudtest/version.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/saucelabs.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/core.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" />
+        <option value="$PROJECT_DIR$/lib/cloudtest/version.rb" />
+        <option value="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" />
       </list>
     </option>
   </component>
@@ -393,8 +390,16 @@
       <workItem from="1559829018374" duration="5294000" />
       <workItem from="1559892299618" duration="6494000" />
       <workItem from="1559900785001" duration="14106000" />
-      <workItem from="1560760046262" duration="1003000" />
+      <workItem from="1560760046262" duration="1055000" />
     </task>
+    <task id="LOCAL-00001" summary="put merging in core">
+      <created>1560761191774</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560761191774</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -430,7 +435,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26897000" />
+    <option name="totallyTimeSpent" value="26949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="28" width="1922" height="1145" extended-state="6" />
@@ -459,6 +464,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="put merging in core" />
+    <option name="LAST_COMMIT_MESSAGE" value="put merging in core" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cloudtest@test_disable_by_default__cloudtest.rcov" NAME="test_disable_by_default: cloudtest Coverage Results" MODIFIED="1559900514969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
@@ -517,13 +526,6 @@
     <entry file="file://$PROJECT_DIR$/exe/cloudtest">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/version.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/capybara-3.22.0/lib/capybara/rack_test/browser.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -559,13 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/saucelabs.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="64" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/cloudtest/lambdatest.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -580,10 +575,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/saucelabs.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="64" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/version.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/cloudtest/browserstack.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="31" column="6" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
+        <state relative-caret-position="544">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
