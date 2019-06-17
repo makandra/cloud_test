@@ -5,7 +5,6 @@ module Cloudtest
       Capybara.app_host = 'http://local:80'
       puts 'Running features on crossbrowsertesting.com'
 
-      TASK_ID = (ENV['TASK_ID'] || 0).to_i
 
       CONFIG = Cloudtest::Cloudtest_Core.load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
       SERVER = 'hub.crossbrowsertesting.com/wd/hub'

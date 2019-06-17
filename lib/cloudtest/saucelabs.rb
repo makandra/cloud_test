@@ -4,8 +4,6 @@ module Cloudtest
 
       puts '> Running features on saucelabs.com'
 
-      TASK_ID = (ENV['TASK_ID'] || 0).to_i
-
       CONFIG = Cloudtest::Cloudtest_Core.load_config('SL_USERNAME', 'SL_ACCESS_KEY')
 
       SERVER = 'ondemand.saucelabs.com:443/wd/hub'

@@ -4,8 +4,6 @@ module Cloudtest
 
       puts '> Running features on lambdatest.com'
 
-      TASK_ID = (ENV['TASK_ID'] || 0).to_i
-
       CONFIG = Cloudtest::Cloudtest_Core.load_config('LT_USERNAME', 'LT_ACCESS_KEY')
 
       SERVER = 'hub.lambdatest.com/wd/hub'
