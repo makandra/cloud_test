@@ -7,9 +7,7 @@ module Cloudtest
 
       TASK_ID = (ENV['TASK_ID'] || 0).to_i
 
-      CONFIG = Cloudtest::Cloudtest_Core.load_config
-      CONFIG['user'] = ENV['CBT_USERNAME'] || CONFIG['user']
-      CONFIG['key'] = ENV['CBT_ACCESS_KEY'] || CONFIG['key']
+      CONFIG = Cloudtest::Cloudtest_Core.load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
       SERVER = 'hub.crossbrowsertesting.com/wd/hub'
       @caps = Hash.new
       @caps['max_duration'] = '1200'
@@ -19,9 +17,6 @@ module Cloudtest
       @caps["webStorageEnabled"] = true
       @caps["acceptSslCerts"] = true
 
-      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1]
-      @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
-      @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
 
       @caps['platform'] = ENV['CLOUDTEST_PLATFORM'].to_s << ENV['CLOUDTEST_OS'].to_s || 'WINDOWS 10'
       @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'

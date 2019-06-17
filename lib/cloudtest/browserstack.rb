@@ -10,17 +10,11 @@ module Cloudtest
         puts 'Please add gem "browserstack-local" to your gemfile!'
         raise LoadError
       end
-      CONFIG = Cloudtest::Cloudtest_Core.load_config
+      CONFIG = Cloudtest::Cloudtest_Core.load_config('BROWSERSTACK_USERNAME', 'BROWSERSTACK_ACCESS_KEY')
 
-      CONFIG['user'] = ENV['BROWSERSTACK_USERNAME'] || CONFIG['user']
-      CONFIG['key'] = ENV['BROWSERSTACK_ACCESS_KEY'] || CONFIG['key']
       SERVER = "hub-cloud.browserstack.com/wd/hub"
 
       @caps = Hash.new
-
-      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1]
-      @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
-      @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
 
       @caps['os_version'] = ENV['CLOUDTEST_OS'] || '10'
       @caps['os'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'

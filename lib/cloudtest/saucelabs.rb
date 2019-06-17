@@ -6,9 +6,8 @@ module Cloudtest
 
       TASK_ID = (ENV['TASK_ID'] || 0).to_i
 
-      CONFIG = Cloudtest::Cloudtest_Core.load_config
-      CONFIG['user'] = ENV['SL_USERNAME'] || CONFIG['user']
-      CONFIG['key'] = ENV['SL_ACCESS_KEY'] || CONFIG['key']
+      CONFIG = Cloudtest::Cloudtest_Core.load_config('SL_USERNAME', 'SL_ACCESS_KEY')
+
       SERVER = 'ondemand.saucelabs.com:443/wd/hub'
       @caps = Hash.new
       @caps['record_video'] = 'true'
@@ -24,9 +23,6 @@ module Cloudtest
       @caps['webStorageEnabled'] = 'true'
       @caps['acceptSslCerts'] = 'true'
 
-      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1]
-      @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
-      @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
 
       @caps['os'] = ENV['CLOUDTEST_OS'] || '10'
       @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
