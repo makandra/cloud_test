@@ -25,7 +25,7 @@ module Cloudtest
       @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
       @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
 
-      @caps = @caps.merge(CONFIG['common_caps'].merge(CONFIG['browser_caps'][0]))
+      @caps = Cloudtest::Cloudtest_Core.merge_caps(@caps, CONFIG)
 
       Cloudtest::Cloudtest_Core.register_driver(@caps, CONFIG['user'], CONFIG['key'], SERVER)
     end

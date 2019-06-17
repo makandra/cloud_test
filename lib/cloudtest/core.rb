@@ -71,5 +71,15 @@ module Cloudtest
       end
     end
 
+    def self.merge_caps(caps, config)
+      if config.has_key?('common_caps')
+        caps = caps.merge(config['common_caps'])
+      end
+      if config.has_key?('browser_caps')
+        caps = caps.merge(config['browser_caps'])
+      end
+      return caps
+    end
+
   end
 end
