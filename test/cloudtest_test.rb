@@ -1,16 +1,13 @@
 require "test_helper"
+require 'cloudtest/lambdatest'
 
 class CloudtestTest < Minitest::Test
   def test_that_it_has_a_version_number
     refute_nil ::Cloudtest::VERSION
   end
 
-  def test_it_does_something_useful
-    assert false
-  end
-
   def setup_fresh
-    #ENV['CLOUDTEST'] = 'false'
+    ENV['CLOUDTEST'] = 'false'
     @core = ::Cloudtest::Cloudtest_Core
   end
 
@@ -29,15 +26,15 @@ class CloudtestTest < Minitest::Test
     setup_fresh
     ENV['CLOUDTEST'] = 'true'
     assert @core.enabled
-    assert_output(/You have enabled CloutTest!/){@core.enabled}
+    assert_output(/You have enabled CloutTest!\n/){@core.enabled}
   end
 
   def test_caps_lambdatest
-    assert_output(/You can find a caps generator here: https:\/\/www.lambdatest.com\/capabilities-generator\//){::Cloudtest::Crossbrowsertesting.list_caps}
+    assert_output(/You can find a caps generator here: https:\/\/www.lambdatest.com\/capabilities-generator\//){::Cloudtest::Lambdatest.list_caps}
   end
 
   def test_get_all_caps_lambdatest
-    ::Cloudtest::Crossbrowsertesting.get_all_caps
+    ::Cloudtest::Lambdatest.get_all_caps
   end
 
 

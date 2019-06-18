@@ -1,47 +1,57 @@
-module Cloudtest
-  class Lambdatest
-    if Cloudtest::Cloudtest_Core.enabled
+require_relative 'core'
+class Saucelabs < Core
+  SERVER = 'ondemand.saucelabs.com:443/wd/hub'
 
-      puts '> Running features on saucelabs.com'
+  def self.init
+    @config = load_config('SL_USERNAME', 'SL_ACCESS_KEY')
 
-      CONFIG = Cloudtest::Cloudtest_Core.load_config('SL_USERNAME', 'SL_ACCESS_KEY')
+    @caps = Hash.new
+    @caps['record_video'] = 'true'
+    @caps['record_network'] = 'true'
+    @caps['javascriptEnabled'] = 'true'
+    @caps['acceptSslCerts'] = 'true'
+    @caps['webStorageEnabled'] = 'true'
+    @caps['cssSelectorsEnabled'] = 'true'
+    @caps['takesScreenshot'] = 'true'
 
-      SERVER = 'ondemand.saucelabs.com:443/wd/hub'
-      @caps = Hash.new
-      @caps['record_video'] = 'true'
-      @caps['record_network'] = 'true'
-      @caps['javascriptEnabled'] = 'true'
-      @caps['acceptSslCerts'] = 'true'
-      @caps['webStorageEnabled'] = 'true'
-      @caps['cssSelectorsEnabled'] = 'true'
-      @caps['takesScreenshot'] = 'true'
-
-      @caps['max_duration'] = '1200'
-      @caps['javascriptEnabled'] = 'true'
-      @caps['webStorageEnabled'] = 'true'
-      @caps['acceptSslCerts'] = 'true'
+    @caps['max_duration'] = '1200'
+    @caps['javascriptEnabled'] = 'true'
+    @caps['webStorageEnabled'] = 'true'
+    @caps['acceptSslCerts'] = 'true'
 
 
-      @caps['os'] = ENV['CLOUDTEST_OS'] || '10'
-      @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
-      @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
-
-      @caps = Cloudtest::Cloudtest_Core.merge_caps(@caps, CONFIG)
+    @caps['os'] = ENV['CLOUDTEST_OS'] || '10'
+    @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
+    @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
 
 
-      puts 'starting saucelabs tunnel..'
-       # inpsire solution by browserstack for starting the tunnel `bin/saucelabs_tunnel -u 7kQU -k 9eee597f-4615-4d10-b9a8-706fb7e75974`
-      Cloudtest::Cloudtest_Core.register_driver(@caps, CONFIG['user'], CONFIG['key'], SERVER)
-    end
+    @caps = merge_caps(@caps, @config)
 
-    def self.list_caps
-      Cloudtest::Cloudtest_Core.list_caps
-      puts 'You can find a caps generator here: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/'
-    end
+  end
+  def self.start
+    puts '> Running features on saucelabs.com'
+    #puts 'starting saucelabs tunnel..'
+    # inpsire solution by browserstack for starting the tunnel `bin/saucelabs_tunnel -u 7kQU -k 9eee597f-4615-4d10-b9a8-706fb7e75974`
+    register_driver(@caps, @config['user'], @config['key'], SERVER)
+  end
+  if enabled
+    init()
+    start()
+  end
 
-    def self.get_all_caps
-      puts @caps
-    end
+  def self.list_caps
+    Core.list_caps
+    puts "Saucelabs specific ENV variables:"
+    puts "ENV['SL_USERNAME']"
+    puts "ENV['SL_ACCESS_KEY']"
+    puts 'You can find a caps generator here: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/'
+  end
+
+  def self.get_all_caps
+    @caps.kind_of?(Hash) || init()
+    puts "Capabilities: "
+    list_these_caps @caps
   end
 end
+
 
