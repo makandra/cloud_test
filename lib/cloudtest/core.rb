@@ -42,14 +42,14 @@ class Core
           config = YAML.load_file(File.absolute_path('/home/philipp/RubymineProjects/cloudtest' + "/config/#{CONFIG_NAME}.config.yml"))
         rescue SystemCallError #error, most likely no config file
           if ENV.has_key?(env_user) && ENV.has_key?(env_pw)
-            puts 'INFO: I did not find a cloudtest.config.yml file, I continue with ENV["' + env_user + '"].'
+            puts 'INFO: I did not find a cloudtest.config.bak.yml file, I continue with ENV["' + env_user + '"].'
             config['key'] = ENV[env_pw]
             config['user'] = ENV[env_user]
             return merge_caps(config, @caps)
           else
             puts 'Error: no config file found at: ' + path
             puts 'Tip: You should run your tests from your main project directory'
-            puts 'Error: I need a config yml file, named ENV["CONFIG_NAME"] or "cloudtest.config.yml" which has at least a "user" and and "key" pair, thank you!'
+            puts 'Error: I need a config yml file, named ENV["CONFIG_NAME"] or "cloudtest.config.bak.yml" which has at least a "user" and and "key" pair, thank you!'
           end
         end
       end
@@ -85,7 +85,7 @@ class Core
       ENV['CLOUDTEST_OS'] || '10'
       ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
       ENV['CLOUDTEST_BROWSER'] || 'CHROME'"""
-    puts 'Please add additional capabilities in the cloudtest.config.yml file'
+    puts 'Please add additional capabilities in the cloudtest.config.bak.yml file'
   end
 
   def self.list_these_caps(caps)

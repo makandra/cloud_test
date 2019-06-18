@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba10d9fe-50b5-4688-be97-47b2a6a66165" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/features/list_caps.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/list_default_caps.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/features/support/setup.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/cloudtest/cli.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cloudtest.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cloudtest.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/features/generator.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/cloudtest/generators/config.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/cloudtest/generators/configs/sample.cloudtest.config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloudtest.gemspec" beforeDir="false" afterPath="$PROJECT_DIR$/cloudtest.gemspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cloudtest.config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/cloudtest.config.bak.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exe/cloudtest" beforeDir="false" afterPath="$PROJECT_DIR$/exe/cloudtest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/cloudtest/cli.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/cli.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/cloudtest/core.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/core.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/saucelabs.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/saucelabs.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cloudtest/version.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cloudtest/version.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/cloudtest_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/cloudtest_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,28 +21,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/cloudtest.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/cloudtest/core.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1428">
-              <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="33" />
+              <caret line="84" column="33" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb">
+        <entry file="file://$PROJECT_DIR$/config/cloudtest.config.bak.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+            <state relative-caret-position="238">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -60,61 +42,70 @@
         <entry file="file://$PROJECT_DIR$/exe/cloudtest">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+              <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/cloudtest/version.rb">
+        <entry file="file://$PROJECT_DIR$/lib/cloudtest/cli.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/features/support/setup.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="24" selection-start-column="24" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/cloudtest/generators/config.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="72" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/cloudtest/lambdatest.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/cloudtest/saucelabs.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+              <caret line="1" column="25" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/cloudtest/cli.rb">
+        <entry file="file://$PROJECT_DIR$/features/generator.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            <state relative-caret-position="153">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/list_caps.feature">
+        <entry file="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/aruba-0.14.10/lib/aruba/cucumber/file.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="218">
+              <caret line="134" selection-start-line="134" selection-end-line="134" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/list_default_caps.feature">
+        <entry file="file://$PROJECT_DIR$/lib/cloudtest/generators/configs/sample.cloudtest.config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+            <state>
+              <caret column="16" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -169,12 +160,15 @@
         <option value="$PROJECT_DIR$/features/list_caps.feature" />
         <option value="$PROJECT_DIR$/features/list_deafult_caps.feature" />
         <option value="$PROJECT_DIR$/lib/cloudtest/browserstack.rb" />
-        <option value="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/lambdatest.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/saucelabs.rb" />
-        <option value="$PROJECT_DIR$/lib/cloudtest/cli.rb" />
         <option value="$PROJECT_DIR$/lib/cloudtest/version.rb" />
         <option value="$PROJECT_DIR$/exe/cloudtest" />
+        <option value="$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb" />
+        <option value="$PROJECT_DIR$/lib/cloudtest/generators/configs/sample.cloudtest.config.yml" />
+        <option value="$PROJECT_DIR$/lib/cloudtest/cli.rb" />
+        <option value="$PROJECT_DIR$/lib/cloudtest/generators/config.rb" />
+        <option value="$PROJECT_DIR$/features/generator.feature" />
       </list>
     </option>
   </component>
@@ -238,6 +232,21 @@
             <path>
               <item name="cloudtest" type="b2602c69:ProjectViewProjectNode" />
               <item name="cloudtest" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="cloudtest" type="462c0819:PsiDirectoryNode" />
+              <item name="generators" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudtest" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="cloudtest" type="462c0819:PsiDirectoryNode" />
+              <item name="generators" type="462c0819:PsiDirectoryNode" />
+              <item name="configs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cloudtest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cloudtest" type="462c0819:PsiDirectoryNode" />
               <item name="pkg" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -281,8 +290,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cucumber.list_deafult_caps.feature">
-    <configuration name="Scenario: List caps (2)" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
+  <component name="RunManager" selected="Cucumber.Scenario: Generate and copy config">
+    <configuration name="Scenario: Generate and copy config" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
       <module name="cloudtest" />
       <predefined_log_file enabled="true" id="RUBY_CUCUMBER" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
@@ -303,45 +312,9 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/features/list_caps.feature" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/features/generator.feature" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="^List caps$" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Scenario: List caps (3)" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
-      <module name="cloudtest" />
-      <predefined_log_file enabled="true" id="RUBY_CUCUMBER" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/features/list_caps.feature" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
-      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="^List caps$" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="^Generate and copy config$" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
@@ -378,6 +351,42 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/features/list_caps.feature" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="^List caps saucelabs$" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="VERBOSE_OPTION" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ZEUS" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SPRING" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method v="2" />
+    </configuration>
+    <configuration name="generator.feature" type="CucumberRunConfigurationType" factoryName="Cucumber" temporary="true">
+      <module name="cloudtest" />
+      <predefined_log_file enabled="true" id="RUBY_CUCUMBER" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*.feature" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$MODULE_DIR$/features/generator.feature" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_TAGS_FILTER" VALUE="" />
+      <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="TEST_NAME_FILTER" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_ARGS" VALUE="--color -r features" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
@@ -464,11 +473,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber.Scenario: Generate and copy config" />
+        <item itemvalue="Cucumber.generator.feature" />
+        <item itemvalue="Cucumber.list_caps.feature" />
         <item itemvalue="Cucumber.list_deafult_caps.feature" />
         <item itemvalue="Cucumber.Scenario: List caps saucelabs" />
-        <item itemvalue="Cucumber.list_caps.feature" />
-        <item itemvalue="Cucumber.Scenario: List caps (3)" />
-        <item itemvalue="Cucumber.Scenario: List caps (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -489,7 +498,7 @@
       <workItem from="1560760046262" duration="3648000" />
       <workItem from="1560764123246" duration="16699000" />
       <workItem from="1560840044165" duration="8785000" />
-      <workItem from="1560849490527" duration="3230000" />
+      <workItem from="1560849490527" duration="6046000" />
     </task>
     <task id="LOCAL-00001" summary="put merging in core">
       <created>1560761191774</created>
@@ -526,28 +535,17 @@
       <option name="project" value="LOCAL" />
       <updated>1560774075181</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="improvements and command line caps + tests">
+      <created>1560852749510</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560852749510</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="list_caps_feature - 2019.06.18 at 11h 42m 59s.xml">
-      <configuration name="list_caps.feature" configurationId="CucumberRunConfigurationType" />
-    </history-entry>
-    <history-entry file="list_caps_feature - 2019.06.18 at 11h 44m 26s.xml">
-      <configuration name="list_caps.feature" configurationId="CucumberRunConfigurationType" />
-    </history-entry>
-    <history-entry file="Scenario__List_caps_saucelabs - 2019.06.18 at 11h 45m 29s.xml">
-      <configuration name="Scenario: List caps saucelabs" configurationId="CucumberRunConfigurationType" />
-    </history-entry>
-    <history-entry file="list_deafult_caps_feature - 2019.06.18 at 11h 56m 15s.xml">
-      <configuration name="list_deafult_caps.feature" configurationId="CucumberRunConfigurationType" />
-    </history-entry>
-    <history-entry file="list_deafult_caps_feature - 2019.06.18 at 11h 57m 32s.xml">
-      <configuration name="list_deafult_caps.feature" configurationId="CucumberRunConfigurationType" />
-    </history-entry>
-    <history-entry file="list_deafult_caps_feature - 2019.06.18 at 11h 58m 48s.xml">
-      <configuration name="list_deafult_caps.feature" configurationId="CucumberRunConfigurationType" />
-    </history-entry>
     <history-entry file="list_deafult_caps_feature - 2019.06.18 at 11h 59m 38s.xml">
       <configuration name="list_deafult_caps.feature" configurationId="CucumberRunConfigurationType" />
     </history-entry>
@@ -560,20 +558,38 @@
     <history-entry file="list_deafult_caps_feature - 2019.06.18 at 12h 08m 49s.xml">
       <configuration name="list_deafult_caps.feature" configurationId="CucumberRunConfigurationType" />
     </history-entry>
+    <history-entry file="list_caps_feature - 2019.06.18 at 12h 20m 10s.xml">
+      <configuration name="list_caps.feature" configurationId="CucumberRunConfigurationType" />
+    </history-entry>
+    <history-entry file="generator_feature - 2019.06.18 at 12h 46m 15s.xml">
+      <configuration name="generator.feature" configurationId="CucumberRunConfigurationType" />
+    </history-entry>
+    <history-entry file="generator_feature - 2019.06.18 at 12h 46m 34s.xml">
+      <configuration name="generator.feature" configurationId="CucumberRunConfigurationType" />
+    </history-entry>
+    <history-entry file="generator_feature - 2019.06.18 at 12h 47m 46s.xml">
+      <configuration name="generator.feature" configurationId="CucumberRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Scenario__Generate_and_copy_config - 2019.06.18 at 12h 49m 11s.xml">
+      <configuration name="Scenario: Generate and copy config" configurationId="CucumberRunConfigurationType" />
+    </history-entry>
+    <history-entry file="Scenario__Generate_and_copy_config - 2019.06.18 at 12h 50m 53s.xml">
+      <configuration name="Scenario: Generate and copy config" configurationId="CucumberRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58256000" />
+    <option name="totallyTimeSpent" value="61072000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="28" width="1922" height="1145" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12860192" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12860192" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32940018" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32940018" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32940018" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -597,20 +613,23 @@
     <MESSAGE value="improvements and README" />
     <MESSAGE value="put 3 caps into core and handle key user reading completly in core" />
     <MESSAGE value="small cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="small cleanup" />
+    <MESSAGE value="improvements and command line caps + tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="improvements and command line caps + tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cloudtest@Scenario__List_caps__2_.rcov" NAME="Scenario: List caps (2) Coverage Results" MODIFIED="1560847467894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@Run_test__CloudtestTest___cloudtest.rcov" NAME="Run test 'CloudtestTest': cloudtest Coverage Results" MODIFIED="1560774838710" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@list_deafult_caps_feature.rcov" NAME="list_deafult_caps.feature Coverage Results" MODIFIED="1560852526574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@browserstack.rcov" NAME="browserstack Coverage Results" MODIFIED="1559898245887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/cloudtest" MODULE_NAME="cloudtest" />
-    <SUITE FILE_PATH="coverage/cloudtest@list_caps_feature.rcov" NAME="list_caps.feature Coverage Results" MODIFIED="1560851063277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
+    <SUITE FILE_PATH="coverage/cloudtest@list_caps_feature.rcov" NAME="list_caps.feature Coverage Results" MODIFIED="1560853206565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@Scenario__List_caps__3_.rcov" NAME="Scenario: List caps (3) Coverage Results" MODIFIED="1560850822915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@lambdatest.rcov" NAME="lambdatest Coverage Results" MODIFIED="1559892318871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib/cloudtest" MODULE_NAME="cloudtest" />
+    <SUITE FILE_PATH="coverage/cloudtest@generator_feature.rcov" NAME="generator.feature Coverage Results" MODIFIED="1560854865280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@test_disable_by_default__cloudtest.rcov" NAME="test_disable_by_default: cloudtest Coverage Results" MODIFIED="1560777337110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@Scenario__List_caps.rcov" NAME="Scenario: List caps Coverage Results" MODIFIED="1560783980422" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@test_disable_by_default_output__cloudtest.rcov" NAME="test_disable_by_default_output: cloudtest Coverage Results" MODIFIED="1559900404039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@Scenario__List_caps__1_.rcov" NAME="Scenario: List caps (1) Coverage Results" MODIFIED="1560844179792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
+    <SUITE FILE_PATH="coverage/cloudtest@Scenario__Generate_and_copy_config.rcov" NAME="Scenario: Generate and copy config Coverage Results" MODIFIED="1560855051722" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@test_setup_lambdatest__cloudtest.rcov" NAME="test_setup_lambdatest: cloudtest Coverage Results" MODIFIED="1559901318894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@test_enabled__cloudtest.rcov" NAME="test_enabled: cloudtest Coverage Results" MODIFIED="1559901359332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
     <SUITE FILE_PATH="coverage/cloudtest@Scenario__List_caps_saucelabs.rcov" NAME="Scenario: List caps saucelabs Coverage Results" MODIFIED="1560851127627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cloudtest" />
@@ -688,59 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/cloudtest.config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/aruba-0.14.10/lib/aruba/cucumber/command.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2346">
           <caret line="138" selection-start-line="138" selection-end-line="138" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/support/setup.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/browserstack.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/lambdatest.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/saucelabs.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/cloudtest/core.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="84" column="33" lean-forward="true" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -758,10 +728,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/list_default_caps.feature">
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/saucelabs.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+        <state relative-caret-position="476">
+          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/lambdatest.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="9" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -772,17 +749,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/features/list_default_caps.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/browserstack.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/aruba-0.14.10/lib/aruba/cucumber/file.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="134" selection-start-line="134" selection-end-line="134" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/core.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="84" column="33" selection-start-line="84" selection-start-column="6" selection-end-line="84" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/crossbrowsertesting.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/cloudtest.config.bak.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/support/setup.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/exe/cloudtest">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <caret line="2" column="40" selection-start-line="2" selection-start-column="40" selection-end-line="2" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/cloudtest/cli.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        <state relative-caret-position="527">
+          <caret line="40" column="50" selection-start-line="40" selection-start-column="50" selection-end-line="40" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/generators/configs/sample.cloudtest.config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cloudtest/generators/config.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="72" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/generator.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
         </state>
       </provider>
     </entry>

@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'cloudtest/cli'
+require_relative '../lib/cloudtest/cli'# 'cloudtest/cli'
 Cloudtest::CLI.start

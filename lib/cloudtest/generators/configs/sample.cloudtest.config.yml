@@ -1,0 +1,15 @@
+user: "username"
+key: "password"
+
+common_caps:
+  "browserstack.local": true
+  "browserstack.debug": true # Visual log
+  "acceptSslCerts": true # allow self signed certificates
+  "name": "Cloudtest gem sample"
+
+browser_caps:
+  -
+    "browser": "IE"
+    "browser_version": "11.0"
+    "os": "Windows"
+    "os_version": "7"

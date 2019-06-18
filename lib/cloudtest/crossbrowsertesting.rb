@@ -1,15 +1,13 @@
 require_relative 'core'
 class Crossbrowsertesting < Core
 
-
   SERVER = 'hub.crossbrowsertesting.com/wd/hub'
-  @caps = Hash.new
   def self.init
     @config = load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
 
-
     Capybara.app_host = 'http://local:80'
     puts '> Running features on crossbrowsertesting.com'
+    @caps = Hash.new
 
     @caps['max_duration'] = '1200'
     @caps['record_video'] = 'true'
