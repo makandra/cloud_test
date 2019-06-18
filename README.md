@@ -40,9 +40,14 @@ In either case they need to include a 'key' and a 'user' value (login for the ch
 - [Saucelabs Configurator](https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/)
 - [lambdatest Capability Generator](https://www.lambdatest.com/capabilities-generator/)
 
+You can generate the following example config file to the config folder with:
+
+    [bundle exec] cloudtest generate config
+    
 Example cloudtest.config.yml:
 
-
+    user: "username"
+    key: "password"
     common_caps:
       "browserstack.local": true
       "browserstack.debug": true # Visual log
@@ -59,20 +64,30 @@ Example cloudtest.config.yml:
 
 And these are the defaults and possible env variable settings:
 
+You can list these with:
+
+    [bundle exec] cloudtest list-default-caps PROVIDER
+    # will show something like this:
+
     ENV['CLOUDTEST_PROJECT'] || # folder name
     ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
     ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
     ENV['CLOUDTEST_OS'] || '10'
     ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
     ENV['CLOUDTEST_BROWSER'] || 'CHROME'
+    
+Additionally you can do a dry run and show the "real" capabilities:
+
+    [bundle exec] cloudtest list-caps PROVIDER
           
 ## Usage
 
 You need to run the specific tunnel app for each provider in order to setup the local tunnel.
 Links:
 
-- Browserstack [tunnel](https://s3.amazonaws.com/browserStack/browserstack-local/BrowserStackLocal-linux-x64) 
-should be installed as a gem, so add gem 'browserstack-local' to your gemfile
+- Browserstack tunnel
+should be installed as a [gem](https://github.com/browserstack/browserstack-local-ruby),
+ so add gem 'browserstack-local' to your gemfile. ([Tunnel Binary](https://s3.amazonaws.com/browserStack/browserstack-local/BrowserStackLocal-linux-x64))
 - [CrossBrowserTesting tunnel](https://github.com/crossbrowsertesting/cbt-tunnel-nodejs/releases)
 - [Saucelabs tunnel](https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Connect+Proxy)
 - [Lambdatest tunnel](https://s3.amazonaws.com/lambda-tunnel/LT_Linux.zip)
@@ -85,8 +100,10 @@ Additionally you need to require the corresponding provider and set the capybara
 
     require 'cloudtest/browserstack'
  
-    Before do
-      Capybara.current_driver = :cloudtest
+    if Browserstack.enabled
+      Before do
+        Capybara.current_driver = :cloudtest
+      end
     end
 
 ## Development
