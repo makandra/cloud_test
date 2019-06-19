@@ -7,7 +7,7 @@ require 'cloudtest/saucelabs'
 require 'cloudtest/browserstack'
 =end
 
-module Cloudtest
+module CloudTest
   class Error < StandardError; end
   # Your code goes here...
 end

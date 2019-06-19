@@ -6,7 +6,7 @@ require_relative 'crossbrowsertesting'
 require_relative 'saucelabs'
 
 
-module Cloudtest
+module CloudTest
   class CLI < Thor
     desc "list-caps PROVIDER", "Shows the currently applied capabilities of that provider"
     def list_caps(provider)

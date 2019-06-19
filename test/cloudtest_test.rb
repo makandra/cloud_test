@@ -19,7 +19,7 @@ class CloudtestTest < Minitest::Test
   def test_disable_by_default
     setup_fresh
     assert ! @core.enabled
-    assert_output(/To enable CloutTest please set the CLOUDTEST env variable to ´true´./){@core.enabled}
+    assert_output(/To enable CloudTest please set the CLOUDTEST env variable to ´true´./){@core.enabled}
   end
 
   def test_enabled
