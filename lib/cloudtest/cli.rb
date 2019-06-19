@@ -2,7 +2,7 @@ require 'thor'
 require 'cloudtest/generators/config'
 require_relative 'browserstack'
 require_relative 'lambdatest'
-require_relative 'crossbrowsertesting'
+require_relative 'cross_browser_testing'
 require_relative 'saucelabs'
 
 
@@ -16,7 +16,7 @@ module CloudTest
       when 'lambdatest', 'lt'
         puts Lambdatest.get_all_caps
       when 'crossbrowsertesting', 'cbs', 'ct', 'cbt'
-        puts Crossbrowsertesting.get_all_caps
+        puts CrossBrowserTesting.get_all_caps
       when 'saucelabs', 'sauce', 'sc', 'sl'
         puts Saucelabs.get_all_caps
       end
@@ -30,7 +30,7 @@ module CloudTest
       when 'lambdatest', 'lt'
         puts Lambdatest.list_caps
       when 'crossbrowsertesting', 'cbs', 'ct', 'cbt'
-        puts Crossbrowsertesting.list_caps
+        puts CrossBrowserTesting.list_caps
       when 'saucelabs', 'sauce', 'sc', 'sl'
         puts Saucelabs.list_caps
       end
@@ -39,6 +39,12 @@ module CloudTest
     desc "generate config", "Puts a sample config yml file into /config directory"
     def generate_config(config)
       Cloudtest::Generators::Config.start([config])
+    end
+
+    desc "test config", "Test whether the config file is configured properly"
+    def test(type)
+      config = CloudTest::Core.load_config
+      config.has_key?('provider')
     end
   end
 end

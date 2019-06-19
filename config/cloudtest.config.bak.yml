@@ -9,7 +9,7 @@ common_caps:
   "name": "Bstack-[Capybara] Local Test"
 
 browser_caps:
-  -
+  IE:
     "browser": "IE"
     "browser_version": "11.0"
     "os": "Windows"

@@ -3,8 +3,8 @@ module CloudTest
   class Saucelabs < Core
     SERVER = 'ondemand.saucelabs.com:443/wd/hub'
 
-    def self.init
-      @config = load_config('SL_USERNAME', 'SL_ACCESS_KEY')
+    def self.init(config=nil)
+      @config = config || load_config('SL_USERNAME', 'SL_ACCESS_KEY')
 
       @caps = Hash.new
       @caps['record_video'] = 'true'
@@ -25,8 +25,10 @@ module CloudTest
       @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
 
 
-      @caps = merge_caps(@caps, @config)
-
+      @caps = merge_caps(@caps, @config, 'saucelabs')
+      if config
+        start()
+      end
     end
     def self.start
       puts '> Running features on saucelabs.com'
@@ -35,10 +37,6 @@ module CloudTest
       register_driver(@caps, @config['user'], @config['key'], SERVER)
       Capybara.app_host = 'http://web:4503'
       Capybara.server_port = 4503
-    end
-    if enabled
-      init()
-      start()
     end
 
     def self.list_caps

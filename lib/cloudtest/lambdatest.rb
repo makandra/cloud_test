@@ -4,8 +4,8 @@ module CloudTest
   class Lambdatest < Core
     SERVER = 'hub.lambdatest.com/wd/hub'
 
-    def self.init
-      @config = load_config('LT_USERNAME', 'LT_ACCESS_KEY')
+    def self.init(config=nil)
+      @config = config || load_config('LT_USERNAME', 'LT_ACCESS_KEY')
       @caps = Hash.new
       @caps['tunnel'] = 'true'
       @caps['visual'] = 'true'
@@ -22,8 +22,10 @@ module CloudTest
       @caps['version'] = ENV['CLOUDTEST_BROWSER'] || '72'
 
 
-      @caps = merge_caps(@caps, @config)
-
+      @caps = merge_caps(@caps, @config, 'lambdatest')
+      if config
+        start()
+      end
     end
     def self.start
       puts '> Running features on lambdatest.com'
@@ -32,10 +34,7 @@ module CloudTest
       Capybara.app_host = 'https://web:4504'
       Capybara.server_port = 4504
     end
-    if enabled
-      init()
-      start()
-    end
+
 
     def self.list_caps
       Core.list_caps

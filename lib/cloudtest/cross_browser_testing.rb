@@ -1,10 +1,10 @@
 require_relative 'core'
 module CloudTest
-  class Crossbrowsertesting < Core
+  class CrossBrowserTesting < Core
 
     SERVER = 'hub.crossbrowsertesting.com/wd/hub'
-    def self.init
-      @config = load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
+    def self.init(config=nil)
+      @config = config || load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
 
       Capybara.app_host = 'http://local:80'
       puts '> Running features on crossbrowsertesting.com'
@@ -21,17 +21,15 @@ module CloudTest
       @caps['platform'] = ENV['CLOUDTEST_PLATFORM'].to_s << ENV['CLOUDTEST_OS'].to_s || 'WINDOWS 10'
       @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
 
-      @caps = merge_caps(@caps, @config)
-
+      @caps = merge_caps(@caps, @config, 'crossbrowsertesting')
+      if config
+        start()
+      end
     end
     def self.start
       register_driver(@caps, @config['user'], @config['key'], SERVER)
-      # maybe add tunnel
     end
-    if enabled
-      init()
-      start()
-    end
+
 
     def self.list_caps # defaults
       Core.list_caps

@@ -1,15 +1,5 @@
 require_relative 'core'
 
-module Cloudtest
-  class Browserstack < Core
-
-  end
-end
-
-class Cloudtest::Browserstack < Cloudtest::Core
-
-end
-
 module CloudTest
   class Browserstack < Core
     # do anything browserstack specific
@@ -17,10 +7,8 @@ module CloudTest
     ENV_USER ='BROWSERSTACK_USERNAME'
     ENV_PWD = 'BROWSERSTACK_ACCESS_KEY'
     @config = Hash.new
-    def self.init
-      @config = Core.load_config(ENV_USER, ENV_PWD)
-      puts "key: " + @config['key']
-
+    def self.init(config=nil)
+      @config = config || Core.load_config(ENV_USER, ENV_PWD)
       @caps = Hash.new
 
       @caps['os_version'] = ENV['CLOUDTEST_OS'] || '10'
@@ -28,13 +16,16 @@ module CloudTest
       @caps['browser'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
       @caps['browser_version'] = ENV['CLOUDTEST_BROWSER_VERSION']
 
-      @caps["browserstack.local"] = true
-      @caps["browserstack.debug"] = true # Visual log
+
       @caps["acceptSslCerts"] = true # allow self signed certificates
 
-      @caps = Core.merge_caps(@caps, @config)
+      @caps = Core.merge_caps(@caps, @config, 'browserstack')
       Capybara.app_host = "http://127.0.0.1:45693"
       Capybara.server_port = 45693
+      Core.list_these_caps @caps
+      if config
+        start()
+      end
     end
 
     def self.start
@@ -57,10 +48,6 @@ module CloudTest
       end
     end
 
-    if Core.enabled
-      self.init()
-      self.start()
-    end
 
     def self.list_caps # defaults
       Core.list_caps
