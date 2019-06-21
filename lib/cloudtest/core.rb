@@ -68,13 +68,14 @@ module CloudTest
       end
 
       def self.list_caps
-        puts 'You can configure all the env variables below:' + """\nENV['CLOUDTEST_PROJECT'] || # name of the folder
+        puts 'You can configure all the env variables below:' + """\n
+      ENV['CLOUDTEST_PROJECT'] || # name of the folder
       ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
       ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
       ENV['CLOUDTEST_OS'] || '10'
       ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
       ENV['CLOUDTEST_BROWSER'] || 'CHROME'"""
-        puts 'Please add additional capabilities in the cloudtest.config.bak.yml file'
+        puts 'Please add additional capabilities in the cloud_test.yml file'
       end
 
       def self.list_these_caps(caps)
@@ -86,6 +87,7 @@ module CloudTest
           puts "Error: No caps"
         end
       end
+
       private
       def self.copy_keys(caps, config, keys=config.keys)
         keys.each do |key|
@@ -95,6 +97,7 @@ module CloudTest
           #end
         end
       end
+
       public
       def self.merge_caps(caps, config, provider=nil, browser=ENV['CLOUD_TEST']) # config overwrites in case of conflict
         if !config.kind_of?(Hash)

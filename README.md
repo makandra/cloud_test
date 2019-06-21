@@ -25,14 +25,12 @@ Or install it yourself as:
 
     $ gem install cloudtest
 ##Configuration
-You can choose between 
+You can configure cloud_test in the
 
-a) a cloudtest.config.yml file in the config directory
-
-
-b) ENV variables
-
-In either case they need to include a 'key' and a 'user' value (login for the chosen provider).
+    config/cloud_test.yml file 
+    
+The minimal config includes a 'key' and a 'user' value (login for the chosen provider), as well
+as 'provider' value. 
  Additional key/value pairs are possible, for example to configure the browser.
 
 - [Browserstack Configurator](https://www.browserstack.com/automate/capabilities)
@@ -46,22 +44,37 @@ You can generate the following example config file to the config folder with:
     
 Example cloudtest.config.yml:
 
+    #config/cloud_test.yml 
     user: "username"
     key: "password"
+    provider: "browserstack"
     common_caps:
-      "browserstack.local": true
-      "browserstack.debug": true # Visual log
       "acceptSslCerts": true # allow self signed certificates
       "name": "Bstack-[Capybara] Local Test"
       'resolution' : '1280x1024'
-    
+    browserstack:
+        "browserstack.local": true
+        "browserstack.debug": true # Visual log
     browser_caps:
-      -
+      IE:
         "browser": "IE"
         "browser_version": "11.0"
         "os": "Windows"
         "os_version": "7"
-
+      CHROME:
+        "browser": "chrome"
+        "browser_version": "75.0"
+        "os": "Windows"
+        "os_version": "10"
+You can choose a specific browser configuration by setting the CLOUD_TEST 
+env variable to your preconfigured browser settings by:
+    
+    export CLOUD_TEST="<CHROME>"
+    # or
+    CLOUD_TEST="CHROME" cucumber
+The _provider_ Hash can include specific configuration only for that provider,
+ common_caps and browser_caps are provider independent. 
+ They may still be different for each provider.
 And these are the defaults and possible env variable settings:
 
 You can list these with:
@@ -81,26 +94,32 @@ Additionally you can do a dry run and show the "real" capabilities:
     [bundle exec] cloudtest list-caps PROVIDER
           
 ## Usage
-
-You need to run the specific tunnel app for each provider in order to setup the local tunnel.
+You do need a config file, read the configuration section above first.
+You need to run the specific tunnel app for each provider in order to setup local testing.
 Links:
 
-- Browserstack tunnel
-should be installed as a [gem](https://github.com/browserstack/browserstack-local-ruby),
+- Browserstack tunnel should be installed as a 
+[gem](https://github.com/browserstack/browserstack-local-ruby),
  so add gem 'browserstack-local' to your gemfile. ([Tunnel Binary](https://s3.amazonaws.com/browserStack/browserstack-local/BrowserStackLocal-linux-x64))
 - [CrossBrowserTesting tunnel](https://github.com/crossbrowsertesting/cbt-tunnel-nodejs/releases)
 - [Saucelabs tunnel](https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Connect+Proxy)
 - [Lambdatest tunnel](https://s3.amazonaws.com/lambda-tunnel/LT_Linux.zip)
+Download the one for your provider and operating system.
+extract the executable and run it. It should be similar to 
 
+    ./<tunnel> -u <username> -k <password|apikey>
 
-To enable Cloud-Testing you need to set the ENV['CLOUDTEST'] variable to 1 or true. 
+To enable Cloud_Testing you need to set the ENV['CLOUD_TEST'] variable to any value. 
 
-    export CLOUDTEST=1
+    export CLOUD_TEST=IE
+    # or
+    CLOUD_TEST=IE cucumber 
+The value can be a browser_caps configuration key, which must be defined in the config file.
 Additionally you need to require the corresponding provider and set the capybara driver as follows:
 
-    require 'cloudtest/browserstack'
+    require 'cloud_test'
  
-    if Browserstack.enabled
+    if CloudTest.enabled
       Before do
         Capybara.current_driver = :cloudtest
       end
