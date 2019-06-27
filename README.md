@@ -1,6 +1,6 @@
-# Cloudtest
+# cloud_test
 
-Cloudtest enables local Cloud-Testing for a number of providers:
+cloud_test enables local Cloud-Testing for a number of providers:
 - Browserstack
 - CrossBrowserTesting
 - saucelabs
