@@ -26,5 +26,4 @@ module CloudTest
       puts "Error: Please add a valid provider to your config file!"
     end
   end
-  # Your code goes here...
 end

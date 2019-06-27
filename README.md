@@ -74,7 +74,7 @@ env variable to your preconfigured browser settings by:
     CLOUD_TEST="CHROME" cucumber
 The _provider_ Hash can include specific configuration only for that provider,
  common_caps and browser_caps are provider independent. 
- They may still be different for each provider.
+ NOTE: Theses capabilities may still be slightly different for each provider.
 And these are the defaults and possible env variable settings:
 
 You can list these with:
@@ -104,18 +104,21 @@ Links:
 - [CrossBrowserTesting tunnel](https://github.com/crossbrowsertesting/cbt-tunnel-nodejs/releases)
 - [Saucelabs tunnel](https://wiki.saucelabs.com/display/DOCS/Setting+Up+Sauce+Connect+Proxy)
 - [Lambdatest tunnel](https://s3.amazonaws.com/lambda-tunnel/LT_Linux.zip)
-Download the one for your provider and operating system.
-extract the executable and run it. It should be similar to 
 
-    ./<tunnel> -u <username> -k <password|apikey>
+Download the one for your provider and operating system.
+Extract the executable and run it. The command should be similar to:
+
+    ./<path_to>/<tunnel> -u <username> -k <password|apikey>
 
 To enable Cloud_Testing you need to set the ENV['CLOUD_TEST'] variable to any value. 
 
     export CLOUD_TEST=IE
     # or
     CLOUD_TEST=IE cucumber 
-The value can be a browser_caps configuration key, which must be defined in the config file.
-Additionally you need to require the corresponding provider and set the capybara driver as follows:
+The value can be a browser_caps configuration key (e.g. IE, chrome, my_ie_browser_config), and must be defined in the config file.
+
+
+Additionally you need to require 'cloud_test' and set the capybara driver as follows:
 
     require 'cloud_test'
  
