@@ -4,8 +4,8 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "cloudtest/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "cloudtest"
-  spec.version       = Cloudtest::VERSION
+  spec.name          = "cloud_test"
+  spec.version       = CloudTest::VERSION
   spec.authors       = ["Philipp Häusele"]
   spec.email         = ["philipp.haeusele@makandra.de"]
 

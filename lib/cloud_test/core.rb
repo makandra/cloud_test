@@ -2,6 +2,7 @@ require 'selenium/webdriver'
 require 'capybara'
 require 'yaml'
 
+#Introduced by browserstack
 class Capybara::Selenium::Driver < Capybara::Driver::Base
   def reset!
     raise "löschbar?"
@@ -10,44 +11,6 @@ class Capybara::Selenium::Driver < Capybara::Driver::Base
     end
   end
 end
-
-
-# class Foo
-#   class << self
-#     def foo
-#
-#     end
-#
-#     private
-#
-#     def bar
-#
-#     end
-#   end
-# end
-#
-# Foo.foo
-# Foo.bar
-#
-# class String
-#   def double_size
-#     2 * size
-#   end
-# end
-#
-#
-# x = "foo"
-# x.size # => 3
-#
-# def x.double_size
-#   2 * size
-# end
-#
-# x.double_size # => 6
-#
-# y = "foo"
-#
-#
 
 
 module CloudTest
@@ -79,7 +42,7 @@ module CloudTest
           end
         rescue SystemCallError
           begin
-            config = YAML.load_file(File.absolute_path('/home/philipp/RubymineProjects/cloudtest' + "/config/#{CONFIG_NAME}.yml")) #TODO: remove in the future
+            config = YAML.load_file(File.absolute_path('/home/philipp/RubymineProjects/cloud_test' + "/config/#{CONFIG_NAME}.yml")) #TODO: remove in the future
           rescue SystemCallError #error, most likely no config file
               puts 'Error: no config file found at: ' + path
               puts 'Tip: You should run your tests from your main project directory'

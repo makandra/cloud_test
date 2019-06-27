@@ -5,8 +5,6 @@ module Cloudtest
     class Config < Thor::Group
       include Thor::Actions
 
-      #argument :group, :type => :string
-      #argument :name, :type => :string
       def self.source_root
         File.dirname(__FILE__) + "/configs"
       end
@@ -17,7 +15,7 @@ module Cloudtest
         end
       end
       def copy_config
-        template("sample.cloudtest.config.yml", "config/cloud_test.yml")
+        template("sample.cloud_test.config.yml", "config/cloud_test.yml")
       end
 
     end

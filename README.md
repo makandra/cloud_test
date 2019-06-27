@@ -14,7 +14,7 @@ It assumes your are using capybara and selenium.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cloudtest'
+gem 'cloud_test'
 ```
 
 And then execute:
@@ -23,7 +23,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install cloudtest
+    $ gem install cloud_test
 ##Configuration
 You can configure cloud_test in the
 
@@ -40,9 +40,9 @@ as 'provider' value.
 
 You can generate the following example config file to the config folder with:
 
-    [bundle exec] cloudtest generate config
+    [bundle exec] cloud_test generate config
     
-Example cloudtest.config.yml:
+Example cloud_test.config.yml:
 
     #config/cloud_test.yml 
     user: "username"
@@ -79,7 +79,7 @@ And these are the defaults and possible env variable settings:
 
 You can list these with:
 
-    [bundle exec] cloudtest list-default-caps PROVIDER
+    [bundle exec] cloud_test list-default-caps PROVIDER
     # will show something like this:
 
     ENV['CLOUDTEST_PROJECT'] || # folder name
@@ -91,7 +91,7 @@ You can list these with:
     
 Additionally you can do a dry run and show the "real" capabilities:
 
-    [bundle exec] cloudtest list-caps PROVIDER
+    [bundle exec] cloud_test list-caps PROVIDER
           
 ## Usage
 You do need a config file, read the configuration section above first.
@@ -119,6 +119,7 @@ The value can be a browser_caps configuration key (e.g. IE, chrome, my_ie_browse
 
 
 Additionally you need to require 'cloud_test' and set the capybara driver as follows:
+NOTE: cloud_test registers a Capybara driver named ':cloudtest'
 
     require 'cloud_test'
  

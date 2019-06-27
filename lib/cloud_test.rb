@@ -1,5 +1,5 @@
-require "cloudtest/version"
-require "cloudtest/core"
+require "cloud_test/version"
+require "cloud_test/core"
 
 
 module CloudTest
@@ -11,16 +11,16 @@ module CloudTest
     config = Core.load_config
     case config.delete('provider').to_s.downcase
     when 'browserstack', 'bs'
-      require 'cloudtest/browserstack'
+      require 'cloud_test/browserstack'
       Browserstack.init config
     when 'lambdatest', 'lt'
-      require 'cloudtest/lambdatest'
+      require 'cloud_test/lambdatest'
       Lambdatest.init config
     when 'crossbrowsertesting', 'cbs', 'ct', 'cbt'
-      require 'cloudtest/cross_browser_testing'
+      require 'cloud_test/cross_browser_testing'
       CrossBrowserTesting.init config
     when 'saucelabs', 'sauce', 'sc', 'sl'
-      require 'cloudtest/saucelabs'
+      require 'cloud_test/saucelabs'
       Saucelabs.init config
     else
       puts "Error: Please add a valid provider to your config file!"
