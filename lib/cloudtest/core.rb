@@ -10,6 +10,46 @@ class Capybara::Selenium::Driver < Capybara::Driver::Base
     end
   end
 end
+
+
+# class Foo
+#   class << self
+#     def foo
+#
+#     end
+#
+#     private
+#
+#     def bar
+#
+#     end
+#   end
+# end
+#
+# Foo.foo
+# Foo.bar
+#
+# class String
+#   def double_size
+#     2 * size
+#   end
+# end
+#
+#
+# x = "foo"
+# x.size # => 3
+#
+# def x.double_size
+#   2 * size
+# end
+#
+# x.double_size # => 6
+#
+# y = "foo"
+#
+#
+
+
 module CloudTest
   class Core
     CONFIG_NAME = 'cloud_test'

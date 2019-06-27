@@ -69,9 +69,9 @@ Example cloudtest.config.yml:
 You can choose a specific browser configuration by setting the CLOUD_TEST 
 env variable to your preconfigured browser settings by:
     
-    export CLOUD_TEST="<CHROME>"
+    export CLOUD_TEST=<BROWSER_CONFIG>
     # or
-    CLOUD_TEST="CHROME" cucumber
+    CLOUD_TEST=<BROWSER_CONFIG> cucumber
 The _provider_ Hash can include specific configuration only for that provider,
  common_caps and browser_caps are provider independent. 
  NOTE: Theses capabilities may still be slightly different for each provider.

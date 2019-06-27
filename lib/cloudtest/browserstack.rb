@@ -6,7 +6,7 @@ module CloudTest
     SERVER = "hub-cloud.browserstack.com/wd/hub"
     ENV_USER ='BROWSERSTACK_USERNAME'
     ENV_PWD = 'BROWSERSTACK_ACCESS_KEY'
-    @config = Hash.new
+
     def self.init(config=nil)
       @config = config || Core.load_config(ENV_USER, ENV_PWD)
       @caps = Hash.new
