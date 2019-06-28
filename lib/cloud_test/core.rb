@@ -33,7 +33,7 @@ module CloudTest
         @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
         @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
 
-        path = `pwd`.to_s.gsub(/\s+/, "") + "/config/#{CONFIG_NAME}.yml"
+        path = `pwd`.to_s.gsub(/\s+/, "") + "/config/#{CONFIG_NAME}.yml" # complete path to the config file
         begin
           config = YAML.load_file(File.absolute_path path)
           if ENV.has_key?(env_user) && ENV.has_key?(env_pw)
@@ -41,15 +41,11 @@ module CloudTest
           config['user'] = ENV[env_user]
           end
         rescue SystemCallError
-          begin
-            config = YAML.load_file(File.absolute_path('/home/philipp/RubymineProjects/cloud_test' + "/config/#{CONFIG_NAME}.yml")) #TODO: remove in the future
-          rescue SystemCallError #error, most likely no config file
               puts 'Error: no config file found at: ' + path
               puts 'Tip: You should run your tests from your main project directory'
               puts 'Error: I need a config yml file, named ENV["CONFIG_NAME"] or "cloud_test.yml" which has at least a "user" and and "key" pair, thank you!'
-          end
         else
-          if config.has_key?('user') && config.has_key?('key') && config.has_key?('provider')
+          if config.has_key?('user') && config.has_key?('key') && config.has_key?('provider') # check wether all the necessary keys exist
             return merge_caps(@caps, config)
           else
             puts 'Error: I have a config yml file, but no user, key or provider value :('
@@ -70,7 +66,7 @@ module CloudTest
 
       end
 
-      def self.list_caps
+      def self.list_caps # print defaults
         puts 'You can configure all the env variables below:' + """\n
       ENV['CLOUDTEST_PROJECT'] || # name of the folder
       ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
@@ -84,31 +80,27 @@ module CloudTest
       def self.list_these_caps(caps)
         if caps.kind_of?(Enumerable)
           caps.each do |key, value|
-            puts "|#{key.to_s.ljust(25)}|#{value.to_s.ljust(44)}|\n"
+            puts "|#{key.to_s.ljust(25)}|#{value.to_s.ljust(44)}|\n" # make a nice table like layout
           end
         else
           puts "Error: No caps"
         end
       end
 
-      private
-      def self.copy_keys(caps, config, keys=config.keys)
+      def self.copy_keys(caps, config, keys=config.keys) # a small helper method, to copy some keys
         keys.each do |key|
-          #if config[key].kind_of?(String) || config[key].kind_of?(TrueClass) || config[key].kind_of?(FalseClass) # only copy string, true or false
-          # provider specific hashes don't matter, they get ignored as long as they stay hashes
           caps[key] = config[key]
-          #end
         end
       end
 
-      public
       def self.merge_caps(caps, config, provider=nil, browser=ENV['CLOUD_TEST']) # config overwrites in case of conflict
         if !config.kind_of?(Hash)
           return caps
         end
         keys = config.keys - ['common_caps', 'browser_caps'] # handle those seperatly
         copy_keys caps, config, keys
-        if provider && config.has_key?(provider) && config[provider].class.included_modules.include?(Enumerable) # unpack browser specific capabilities
+        # unpack browser specific capabilities
+        if provider && config.has_key?(provider) && config[provider].class.included_modules.include?(Enumerable)
           puts "found specific values for provider!"
           copy_keys caps, config[provider]
         end

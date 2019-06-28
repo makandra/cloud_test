@@ -5,7 +5,7 @@ common_caps:
   "acceptSslCerts": true # allow self signed certificates
   "name": "Bstack-[Capybara] Local Test"
   'resolution' : '1280x1024'
-browserstack:
+browserstack: #optional block
   "browserstack.local": true
   "browserstack.debug": true # Visual log
 browser_caps:

@@ -36,7 +36,7 @@ module CloudTest
         puts 'Please add gem "browserstack-local" to your gemfile!'
         raise LoadError
       end
-      # Code to start browserstack local before start of test
+      # Code to start browserstack local (tunnel) before start of test
       @bs_local = BrowserStack::Local.new
       bs_local_args = {"key" => "#{@config['key']}"}
       @bs_local.start(bs_local_args)
