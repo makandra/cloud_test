@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloudtest (0.4.3)
+    cloud_test (0.5.1)
       thor
 
 GEM
@@ -72,7 +72,7 @@ DEPENDENCIES
   browserstack-local
   bundler (~> 2.0)
   capybara
-  cloudtest!
+  cloud_test!
   cucumber (~> 1.3.20)
   minitest (~> 5.0)
   rake (~> 10.0)

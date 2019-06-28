@@ -35,8 +35,6 @@ module CloudTest
       #puts 'starting saucelabs tunnel..'
       # inpsire solution by browserstack for starting the tunnel `bin/saucelabs_tunnel -u 7kQU -k 9eee597f-4615-4d10-b9a8-706fb7e75974`
       register_driver(@caps, @config['user'], @config['key'], SERVER)
-      Capybara.app_host = 'http://web:4503'
-      Capybara.server_port = 4503
     end
 
     def self.list_caps

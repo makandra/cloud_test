@@ -22,6 +22,7 @@ module CloudTest
       @caps = Core.merge_caps(@caps, @config, 'browserstack')
       Capybara.app_host = "http://127.0.0.1:45693"
       Capybara.server_port = 45693
+      puts 'Capybara.app_host = "http://127.0.0.1:45693"'
       Core.list_these_caps @caps
       if config
         start()

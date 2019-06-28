@@ -33,6 +33,8 @@ module CloudTest
       register_driver(@caps, @config['user'], @config['key'], SERVER)
       Capybara.app_host = 'https://web:4504'
       Capybara.server_port = 4504
+      puts 'Capybara.app_host = "https://web:4504"'
+
     end
 
 
