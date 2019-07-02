@@ -11,13 +11,13 @@ module CloudTest
     desc "list-caps PROVIDER", "Shows the currently applied capabilities of that provider"
     def list_caps(provider)
       case provider.to_s.downcase
-      when 'browserstack', 'bs'
+      when 'browserstack', 'bs', 'b'
         puts Browserstack.get_all_caps
-      when 'lambdatest', 'lt'
+      when 'lambdatest', 'lt', 'l'
         puts Lambdatest.get_all_caps
-      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt'
+      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
         puts CrossBrowserTesting.get_all_caps
-      when 'saucelabs', 'sauce', 'sc', 'sl'
+      when 'saucelabs', 'sauce', 'sc', 'sl', 's'
         puts Saucelabs.get_all_caps
       end
     end
@@ -25,13 +25,13 @@ module CloudTest
     desc "list-default-caps PROVIDER", "Shows the default capabilities for that provider"
     def list_default_caps(provider)
       case provider.to_s.downcase
-      when 'browserstack', 'bs'
+      when 'browserstack', 'bs', 'b'
         puts Browserstack.list_caps
-      when 'lambdatest', 'lt'
+      when 'lambdatest', 'lt', 'l'
         puts Lambdatest.list_caps
-      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt'
+      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
         puts CrossBrowserTesting.list_caps
-      when 'saucelabs', 'sauce', 'sc', 'sl'
+      when 'saucelabs', 'sauce', 'sc', 'sl', 's'
         puts Saucelabs.list_caps
       end
     end

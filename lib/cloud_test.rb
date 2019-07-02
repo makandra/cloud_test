@@ -10,16 +10,16 @@ module CloudTest
   if enabled?
     config = Core.load_config
     case config.delete('provider').to_s.downcase
-    when 'browserstack', 'bs'
+    when 'browserstack'
       require 'cloud_test/browserstack'
       Browserstack.init config
-    when 'lambdatest', 'lt'
+    when 'lambdatest'
       require 'cloud_test/lambdatest'
       Lambdatest.init config
-    when 'crossbrowsertesting', 'cbs', 'ct', 'cbt'
+    when 'crossbrowsertesting'
       require 'cloud_test/cross_browser_testing'
       CrossBrowserTesting.init config
-    when 'saucelabs', 'sauce', 'sc', 'sl'
+    when 'saucelabs', 'sauce'
       require 'cloud_test/saucelabs'
       Saucelabs.init config
     else
