@@ -85,6 +85,7 @@ module CloudTest
         else
           puts "Error: No caps"
         end
+        return nil
       end
 
       def self.copy_keys(caps, config, keys=config.keys) # a small helper method, to copy some keys
