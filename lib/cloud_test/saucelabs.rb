@@ -7,23 +7,25 @@ module CloudTest
       @config = config || load_config('SL_USERNAME', 'SL_ACCESS_KEY')
 
       @caps = Hash.new
-      @caps['record_video'] = 'true'
-      @caps['record_network'] = 'true'
-      @caps['javascriptEnabled'] = 'true'
-      @caps['acceptSslCerts'] = 'true'
-      @caps['webStorageEnabled'] = 'true'
-      @caps['cssSelectorsEnabled'] = 'true'
-      @caps['takesScreenshot'] = 'true'
+      @caps['record_video'] = true
+      @caps['record_network'] = true
+      @caps['javascriptEnabled'] = true
+      @caps['acceptSslCerts'] = true
+      @caps['webStorageEnabled'] = true
+      @caps['cssSelectorsEnabled'] = true
+      @caps['takesScreenshot'] = true
 
       @caps['max_duration'] = '1200'
-      @caps['javascriptEnabled'] = 'true'
-      @caps['webStorageEnabled'] = 'true'
-      @caps['acceptSslCerts'] = 'true'
-      @caps['extendedDebugging'] = 'true'
+      @caps['javascriptEnabled'] = true
+      @caps['webStorageEnabled'] = true
+      @caps['acceptSslCerts'] = true
+      @caps['extendedDebugging'] = true
 
       @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS 10'
       @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
 
+      Capybara.app_host = "http://0.0.0.0:4594"
+      Capybara.server_port = 4594
 
       @caps = merge_caps(@caps, @config, 'saucelabs')
       if config

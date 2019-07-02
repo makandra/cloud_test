@@ -1,5 +1,5 @@
 require 'thor'
-require 'cloudtest/generators/config'
+require 'cloud_test/generators/config'
 require_relative 'browserstack'
 require_relative 'lambdatest'
 require_relative 'cross_browser_testing'

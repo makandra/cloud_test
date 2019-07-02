@@ -11,8 +11,8 @@ module CloudTest
       @caps = Hash.new
 
       @caps['max_duration'] = '1200'
-      @caps['record_video'] = 'true'
-      @caps['record_network'] = 'true'
+      @caps['record_video'] = true
+      @caps['record_network'] = true
       @caps["javascriptEnabled"] = true
       @caps["webStorageEnabled"] = true
       @caps["acceptSslCerts"] = true

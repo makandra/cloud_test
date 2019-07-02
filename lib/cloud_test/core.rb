@@ -109,7 +109,7 @@ module CloudTest
         end
         if config.has_key?('browser_caps')
           if config['browser_caps'].kind_of?(Hash) # be more polite, allow browserstack notation and allow missing dash
-            caps = caps.merge(config['browser_caps'][browser || 0])
+            caps = caps.merge(config['browser_caps'][browser || config['browser_caps'].keys[0]])
           else
             caps = caps.merge(config['browser_caps'])
           end
