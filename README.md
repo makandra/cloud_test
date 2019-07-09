@@ -118,7 +118,9 @@ To enable Cloud_Testing you need to set the ENV['CLOUD_TEST'] variable to any va
 The value can be a browser_caps configuration key (e.g. IE, chrome, my_ie_browser_config), and must be defined in the config file.
 
 
-Additionally you need to require 'cloud_test' and set the capybara driver as follows:
+Additionally you need to require 'cloud_test' and set the capybara driver in the
+ features/support/env.rb file as follows:
+ 
 NOTE: cloud_test registers a Capybara driver named ':cloudtest'
 
     require 'cloud_test'
@@ -129,6 +131,11 @@ NOTE: cloud_test registers a Capybara driver named ':cloudtest'
       end
     end
 
+If you want to test your whether your login credentials work, you can use the
+following command:
+
+    [bundle exec] cloud_test test-connection
+    
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

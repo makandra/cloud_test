@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cloud_test (0.5.1)
+    cloud_test (0.6.1)
       thor
 
 GEM
