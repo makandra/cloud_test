@@ -3,7 +3,7 @@ require_relative 'core'
 module CloudTest
   class Lambdatest < Core
     SERVER = 'hub.lambdatest.com/wd/hub'
-
+    DASHBOARD_LINK = "https://automation.lambdatest.com/"
     def self.init(config=nil)
       @config = config || load_config('LT_USERNAME', 'LT_ACCESS_KEY')
       @caps = Hash.new

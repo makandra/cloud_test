@@ -3,6 +3,7 @@ module CloudTest
   class CrossBrowserTesting < Core
 
     SERVER = 'hub.crossbrowsertesting.com/wd/hub'
+    DASHBOARD_LINK = "https://app.crossbrowsertesting.com/"
     def self.init(config=nil)
       @config = config || load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
 

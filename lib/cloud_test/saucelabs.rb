@@ -2,7 +2,7 @@ require_relative 'core'
 module CloudTest
   class Saucelabs < Core
     SERVER = 'ondemand.saucelabs.com:443/wd/hub'
-
+    DASHBOARD_LINK = "https://app.saucelabs.com/dashboard/builds"
     def self.init(config=nil)
       @config = config || load_config('SL_USERNAME', 'SL_ACCESS_KEY')
 

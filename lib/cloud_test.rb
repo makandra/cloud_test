@@ -9,21 +9,10 @@ module CloudTest
   end
   if enabled?
     config = Core.load_config
-    case config.delete('provider').to_s.downcase
-    when 'browserstack'
-      require 'cloud_test/browserstack'
-      Browserstack.init config
-    when 'lambdatest'
-      require 'cloud_test/lambdatest'
-      Lambdatest.init config
-    when 'crossbrowsertesting'
-      require 'cloud_test/cross_browser_testing'
-      CrossBrowserTesting.init config
-    when 'saucelabs', 'sauce'
-      require 'cloud_test/saucelabs'
-      Saucelabs.init config
-    else
-      puts "Error: Please add a valid provider to your config file!"
-    end
+    CloudTest::Core.get_provider_class(config).init config
+  end
+
+  def self.show_dashboard_link
+    Core.list_dashboard_link
   end
 end
