@@ -15,7 +15,6 @@ module CloudTest
       end
       def copy_config
         template("sample.cloud_test.yml", "config/cloud_test.yml")
-        template("sample.cloud_test.rb", "feautures/support/sample.cloud_test.rb")
       end
     end
   end

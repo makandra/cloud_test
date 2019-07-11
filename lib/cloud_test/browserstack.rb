@@ -10,7 +10,7 @@ module CloudTest
 
     def self.init(config=nil)
       @config = config || Core.load_config(ENV_USER, ENV_PWD)
-      @caps = Hash.new
+      @caps = Core.get_default_caps
 
       @caps['os_version'] = ENV['CLOUDTEST_OS'] || '10'
       @caps['os'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
@@ -38,7 +38,7 @@ module CloudTest
       end
       # Code to start browserstack local (tunnel) before start of test
       @bs_local = BrowserStack::Local.new
-      bs_local_args = {"key" => "#{@config['key']}", "logfile" => "logs/browserstack-local-logs.txt"}
+      bs_local_args = {"key" => "#{@config['key']}", "logfile" => "log/browserstack-local-logs.txt"}
       @bs_local.start(bs_local_args)
       register_driver(@caps, @config['user'], @config['key'], SERVER)
 

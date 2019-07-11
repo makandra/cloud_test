@@ -6,7 +6,7 @@ module CloudTest
     def self.init(config=nil)
       @config = config || load_config('SL_USERNAME', 'SL_ACCESS_KEY')
 
-      @caps = Hash.new
+      @caps = Core.get_default_caps
       @caps['record_video'] = true
       @caps['record_network'] = true
       @caps['javascriptEnabled'] = true

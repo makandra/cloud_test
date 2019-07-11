@@ -6,7 +6,7 @@ module CloudTest
     DASHBOARD_LINK = "https://automation.lambdatest.com/"
     def self.init(config=nil)
       @config = config || load_config('LT_USERNAME', 'LT_ACCESS_KEY')
-      @caps = Hash.new
+      @caps = Core.get_default_caps
       @caps['tunnel'] = true
       @caps['visual'] = true
       @caps['javascriptEnabled'] = true

@@ -12,7 +12,13 @@ module CloudTest
     CloudTest::Core.get_provider_class(config).init config
   end
 
-  def self.show_dashboard_link
-    Core.list_dashboard_link
+  at_exit do
+    if $!.nil? || $!.is_a?(SystemExit) && $!.success?
+      Core.list_dashboard_link
+    else
+      code = $!.is_a?(SystemExit) ? $!.status : 1
+      Core.list_dashboard_link
+      exit code
+    end
   end
 end

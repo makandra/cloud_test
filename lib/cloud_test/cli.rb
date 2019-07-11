@@ -11,30 +11,14 @@ module CloudTest
   class CLI < Thor
     desc "list-caps PROVIDER", "Shows the currently applied capabilities of that provider"
     def list_caps(provider)
-      case provider.to_s.downcase
-      when 'browserstack', 'bs', 'b'
-        puts Browserstack.get_all_caps
-      when 'lambdatest', 'lt', 'l'
-        puts Lambdatest.get_all_caps
-      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
-        puts CrossBrowserTesting.get_all_caps
-      when 'saucelabs', 'sauce', 'sc', 'sl', 's'
-        puts Saucelabs.get_all_caps
-      end
+      hash = {"provider" => provider}
+      Core.get_provider_class(hash).get_all_caps
     end
 
     desc "list-default-caps PROVIDER", "Shows the default capabilities for that provider"
     def list_default_caps(provider)
-      case provider.to_s.downcase
-      when 'browserstack', 'bs', 'b'
-        puts Browserstack.list_caps
-      when 'lambdatest', 'lt', 'l'
-        puts Lambdatest.list_caps
-      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
-        puts CrossBrowserTesting.list_caps
-      when 'saucelabs', 'sauce', 'sc', 'sl', 's'
-        puts Saucelabs.list_caps
-      end
+      hash = {"provider" => provider}
+      Core.get_provider_class(hash).list_caps
     end
 
     desc "generate config", "Puts a sample config yml file into /config directory"
@@ -43,9 +27,33 @@ module CloudTest
     end
 
     desc "generate", "Puts a sample config yml file into /config directory"
-    def generate_all()
+    def generate()
       CloudTest::Generators::Config.start()
       CloudTest::Generators::Support.start()
+    end
+
+    desc "start", "Runs cucumber sequentially for all defined browsers. Uses the cucumber tag. With -v redirect all the standard output"
+    option :v
+    def start()
+      require 'open3'
+      config = Core.load_config
+      config['browsers'].keys.each { |browser_config_name|
+        Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, "bundle" ,"exec", "cucumber", "-t","#{config['cucumber_tag'].to_s}") do |stdin, stdout_err, wait_thr|
+          if options[:v]
+            while line = stdout_err.gets
+              puts line
+            end
+          end
+          exit_status = wait_thr.value
+          if exit_status == 0
+            puts "Test on browser: #{browser_config_name} was successful!"
+          else
+            puts "Test on browser: #{browser_config_name} was not successful!"
+            puts stdout_err
+            raise "did not work"
+          end
+        end
+      }
     end
 
     desc "test-config", "Test whether the config file is configured properly"

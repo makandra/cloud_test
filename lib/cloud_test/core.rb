@@ -15,13 +15,22 @@ module CloudTest
       end
     end
 
-    def self.load_config(env_user='CLOUD_TEST_USER', env_pw='CLOUD_TEST_PW')
-      config = Hash.new
+    def self.get_default_caps
       @caps = Hash.new
       @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1] # folder name
       @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
       @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
+      return @caps
+    end
 
+    def self.check_if_input_is_valid?(str)
+      Regexp.new('^@?[A-z]+\d*"$') =~ str
+    end
+
+    def self.load_config(env_user='CLOUD_TEST_USER', env_pw='CLOUD_TEST_PW')
+      config = Hash.new
+
+      @caps = self.get_default_caps
       path = `pwd`.to_s.gsub(/\s+/, "") + "/config/#{CONFIG_NAME}.yml" # complete path to the config file
       begin
         config = YAML.load_file(File.absolute_path path)
@@ -35,7 +44,13 @@ module CloudTest
         puts 'Error: I need a config yml file, named ENV["CONFIG_NAME"] or "cloud_test.yml" which has at least a "user" and and "key" pair, thank you!'
       else
         if config.has_key?('user') && config.has_key?('key') && config.has_key?('provider') # check wether all the necessary keys exist
-          return merge_caps(@caps, config)
+          list_to_check_input = [config['browsers'].keys, (config['cucumber_tag'] if config.has_key?('cucumber_tag'))].flatten
+          list_to_check_input.each do |str|
+            if check_if_input_is_valid?(str)
+              raise "Invalid value: #{str}. Only characters followed by digits are allowed"
+            end
+          end
+          return config
         else
           puts 'Error: I have a config yml file, but no user, key or provider value :('
           puts "Keys: " + config.keys.to_s
@@ -93,16 +108,14 @@ module CloudTest
       end
       keys = config.keys - ['common_caps', 'browsers'] # handle those seperatly
       copy_keys caps, config, keys
-      # unpack browser specific capabilities
       if provider && config.has_key?(provider) && config[provider].class.included_modules.include?(Enumerable)
-        puts "found specific values for provider!"
         copy_keys caps, config[provider]
       end
       if config.has_key?('common_caps')
         caps = caps.merge(config['common_caps'])
       end
       if config.has_key?('browsers')
-        if config['browsers'].kind_of?(Hash) # be more polite, allow browserstack notation and allow missing dash
+        if config['browsers'].kind_of?(Hash)
           caps = caps.merge(config['browsers'][browser || config['browsers'].keys[0]])
         else
           caps = caps.merge(config['browsers'])
@@ -113,16 +126,16 @@ module CloudTest
 
     def self.get_provider_class(config=load_config)
       case config.delete('provider').to_s.downcase
-      when 'browserstack'
+      when 'browserstack', 'bs', 'b'
         require 'cloud_test/browserstack'
         return Browserstack
-      when 'lambdatest'
+      when 'lambdatest', 'lt', 'l'
         require 'cloud_test/lambdatest'
         return Lambdatest
-      when 'crossbrowsertesting'
+      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
         require 'cloud_test/cross_browser_testing'
         return CrossBrowserTesting
-      when 'saucelabs', 'sauce'
+      when 'saucelabs', 'sauce', 'sc', 'sl', 's'
         require 'cloud_test/saucelabs'
         return Saucelabs
       else

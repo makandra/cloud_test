@@ -13,7 +13,7 @@ module CloudTest
         end
       end
       def copy_config
-        template("sample.cloud_test.rb", "feautures/support/cloud_test.rb")
+        template("sample.cloud_test.rb", "features/support/cloud_test.rb")
       end
     end
   end

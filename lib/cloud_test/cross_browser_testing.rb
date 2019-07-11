@@ -9,7 +9,7 @@ module CloudTest
 
       Capybara.app_host = 'http://local:80'
       puts '> Running features on crossbrowsertesting.com'
-      @caps = Hash.new
+      @caps = Core.get_default_caps
 
       @caps['max_duration'] = '1200'
       @caps['record_video'] = true

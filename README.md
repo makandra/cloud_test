@@ -29,7 +29,8 @@ You can configure cloud_test in the
 
     config/cloud_test.yml file 
     
-The minimal config includes a 'key' and a 'user' value (login for the chosen provider), as well
+The minimal config includes a 'key' and a 'user' value (which may be or not be
+ the login credentials for the chosen provider), as well
 as 'provider' value. 
  Additional key/value pairs are possible, for example to configure the browser.
 
@@ -40,22 +41,21 @@ as 'provider' value.
 
 You can generate the following example config file to the config folder with:
 
-    [bundle exec] cloud_test generate config
+    [bundle exec] cloud_test generate [config]
     
 Example cloud_test.config.yml:
 
     #config/cloud_test.yml 
-    user: "username"
-    key: "password"
     provider: "browserstack"
+    user: "username" # these may not be the login credentials
+    key: "password"
+    cloud_test_debug: false
     common_caps:
       "acceptSslCerts": true # allow self signed certificates
-      "name": "Bstack-[Capybara] Local Test"
-      'resolution' : '1280x1024'
-    browserstack:
-        "browserstack.local": true
-        "browserstack.debug": true # Visual log
-    browser_caps:
+    browserstack: #optional block
+      "browserstack.local": true
+      "browserstack.debug": true # Visual log
+    browsers:
       IE:
         "browser": "IE"
         "browser_version": "11.0"
@@ -65,7 +65,8 @@ Example cloud_test.config.yml:
         "browser": "chrome"
         "browser_version": "75.0"
         "os": "Windows"
-        "os_version": "10"
+    cucumber_tag: "@cloudtest"
+
 You can choose a specific browser configuration by setting the CLOUD_TEST 
 env variable to your preconfigured browser settings by:
     
@@ -74,10 +75,12 @@ env variable to your preconfigured browser settings by:
     CLOUD_TEST=<BROWSER_CONFIG> cucumber
 The _provider_ Hash can include specific configuration only for that provider,
  common_caps and browser_caps are provider independent. 
+ 
  NOTE: Theses capabilities may still be slightly different for each provider.
+If you set the cloud_test_debug key to true cloud_test will display some additional
+details.
+ 
 And these are the defaults and possible env variable settings:
-
-You can list these with:
 
     [bundle exec] cloud_test list-default-caps PROVIDER
     # will show something like this:
@@ -119,7 +122,10 @@ The value can be a browser_caps configuration key (e.g. IE, chrome, my_ie_browse
 
 
 Additionally you need to require 'cloud_test' and set the capybara driver in the
- features/support/env.rb file as follows:
+ features/support/cloud_test.rb file as follows:
+ This will be generated automatically if you run:
+ 
+    [bundle exec] cloud_test generate
  
 NOTE: cloud_test registers a Capybara driver named ':cloudtest'
 
@@ -135,6 +141,16 @@ If you want to test your whether your login credentials work, you can use the
 following command:
 
     [bundle exec] cloud_test test-connection
+    
+To automate things even further you can define a cucumber tag in the config file 
+(default: '@cloudtest'), tag all scenarios you wish to run and run the following command:
+
+    [bundle exec] cloud_test start [-v]
+This command will run all tagged scenarios sequantially with all browser configurations
+defined in the 'browsers' list in your config file. It run the following command for each browser:
+
+    CLOUD_TEST=<browser_config_name> bundle exec cucumber -t <cucumber_tag>
+
     
 ## Development
 
