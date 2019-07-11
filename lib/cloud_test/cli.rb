@@ -1,5 +1,6 @@
 require 'thor'
 require 'cloud_test/generators/config'
+require 'cloud_test/generators/cloud_test_env'
 require_relative 'browserstack'
 require_relative 'lambdatest'
 require_relative 'cross_browser_testing'
@@ -38,10 +39,16 @@ module CloudTest
 
     desc "generate config", "Puts a sample config yml file into /config directory"
     def generate_config(config)
-      Cloudtest::Generators::Config.start([config])
+      CloudTest::Generators::Config.start([config])
     end
 
-    desc "test config", "Test whether the config file is configured properly"
+    desc "generate", "Puts a sample config yml file into /config directory"
+    def generate_all()
+      CloudTest::Generators::Config.start()
+      CloudTest::Generators::Support.start()
+    end
+
+    desc "test-config", "Test whether the config file is configured properly"
     def test(type)
       config = CloudTest::Core.load_config
       config.has_key?('provider')

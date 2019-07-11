@@ -29,6 +29,8 @@ module CloudTest
     def self.start
       register_driver(@caps, @config['user'], @config['key'], SERVER)
     end
+    # update status
+    # https://help.crossbrowsertesting.com/selenium-testing/tutorials/updating-selenium-tests-pass-fail/
 
 
     def self.list_caps # defaults

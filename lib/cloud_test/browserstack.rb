@@ -22,7 +22,6 @@ module CloudTest
       @caps = Core.merge_caps(@caps, @config, 'browserstack')
       Capybara.app_host = "http://127.0.0.1:38946"
       Capybara.server_port = 38946
-      puts 'Capybara.app_host = "http://127.0.0.1:38946"'
       if config
         start()
       end
@@ -38,7 +37,7 @@ module CloudTest
       end
       # Code to start browserstack local (tunnel) before start of test
       @bs_local = BrowserStack::Local.new
-      bs_local_args = {"key" => "#{@config['key']}"}
+      bs_local_args = {"key" => "#{@config['key']}", "logfile" => "logs/browserstack-local-logs.txt"}
       @bs_local.start(bs_local_args)
       register_driver(@caps, @config['user'], @config['key'], SERVER)
 

@@ -1,22 +1,21 @@
 require 'thor/group'
 module CloudTest
   module Generators
-    class Config < Thor::Group
+    class  Support < Thor::Group
       include Thor::Actions
-
       def self.source_root
         File.dirname(__FILE__) + "/configs"
       end
 
       def create_group
-        if !Dir.exist?('config')
-          empty_directory('config')
+        if !Dir.exist?('features/support')
+          empty_directory('features/support')
         end
       end
       def copy_config
-        template("sample.cloud_test.yml", "config/cloud_test.yml")
-        template("sample.cloud_test.rb", "feautures/support/sample.cloud_test.rb")
+        template("sample.cloud_test.rb", "feautures/support/cloud_test.rb")
       end
     end
   end
 end
+

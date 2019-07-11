@@ -1,14 +1,13 @@
-user: "username"
-key: "password"
 provider: "browserstack"
+user: "username" # these may not be the login credentials
+key: "password"
+cloud_test_debug: false
 common_caps:
   "acceptSslCerts": true # allow self signed certificates
-  "name": "Bstack-[Capybara] Local Test"
-  'resolution' : '1280x1024'
 browserstack: #optional block
   "browserstack.local": true
   "browserstack.debug": true # Visual log
-browser_caps:
+browsers:
   IE:
     "browser": "IE"
     "browser_version": "11.0"
@@ -18,3 +17,4 @@ browser_caps:
     "browser": "chrome"
     "browser_version": "75.0"
     "os": "Windows"
+

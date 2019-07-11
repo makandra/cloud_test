@@ -2,21 +2,10 @@ require 'selenium/webdriver'
 require 'capybara'
 require 'yaml'
 
-#Introduced by browserstack
-class Capybara::Selenium::Driver < Capybara::Driver::Base
-  def reset!
-    raise "löschbar?"
-    if @browser
-      @browser.navigate.to('about:blank')
-    end
-  end
-end
-
-
 module CloudTest
   class Core
     CONFIG_NAME = 'cloud_test'
-    def self.enabled
+    def self.enabled?
       en = ENV.has_key?('CLOUD_TEST')
       if en
         puts 'You have enabled CloudTest!'
@@ -56,6 +45,11 @@ module CloudTest
       end
 
       def self.register_driver(capsArray, user, key, server)
+        if capsArray.has_keys?('cloud_test_debug') and capsArray['cloud_test_debug']
+          puts "Capybara.app_host = #{Capybara.app_host}"
+          list_these_caps capsArray
+        end
+
         Capybara.register_driver :cloud_test do |app|
           Capybara::Selenium::Driver.new(app,
                                          :browser => :remote,
@@ -98,7 +92,7 @@ module CloudTest
         if !config.kind_of?(Hash)
           return caps
         end
-        keys = config.keys - ['common_caps', 'browser_caps'] # handle those seperatly
+        keys = config.keys - ['common_caps', 'browsers'] # handle those seperatly
         copy_keys caps, config, keys
         # unpack browser specific capabilities
         if provider && config.has_key?(provider) && config[provider].class.included_modules.include?(Enumerable)
@@ -108,11 +102,11 @@ module CloudTest
         if config.has_key?('common_caps')
           caps = caps.merge(config['common_caps'])
         end
-        if config.has_key?('browser_caps')
-          if config['browser_caps'].kind_of?(Hash) # be more polite, allow browserstack notation and allow missing dash
-            caps = caps.merge(config['browser_caps'][browser || config['browser_caps'].keys[0]])
+        if config.has_key?('browsers')
+          if config['browsers'].kind_of?(Hash) # be more polite, allow browserstack notation and allow missing dash
+            caps = caps.merge(config['browsers'][browser || config['browsers'].keys[0]])
           else
-            caps = caps.merge(config['browser_caps'])
+            caps = caps.merge(config['browsers'])
           end
         end
         return caps
