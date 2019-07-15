@@ -12,13 +12,11 @@ module CloudTest
       @config = config || Core.load_config(ENV_USER, ENV_PWD)
       @caps = Core.get_default_caps
 
-      @caps['os_version'] = ENV['CLOUDTEST_OS'] || '10'
-      @caps['os'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
-      @caps['browser'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
-      @caps['browser_version'] = ENV['CLOUDTEST_BROWSER_VERSION']
-
-
-      @caps["acceptSslCerts"] = true # allow self signed certificates
+      @caps["browserstack.local"] = true
+      @caps["browserstack.debug"] = true # Visual log
+      @caps['os_version']      = '10'
+      @caps['os']              = 'WINDOWS'
+      @caps['browser']         = 'CHROME'
 
       @caps = Core.merge_caps(@caps, @config, 'browserstack')
       Capybara.app_host = "http://127.0.0.1:38946"
@@ -50,10 +48,10 @@ module CloudTest
 
     def self.list_caps # defaults
       Core.list_caps
-      puts "browserstack specific ENV variables:"
-      puts "ENV['BROWSERSTACK_USERNAME']"
-      puts "ENV['BROWSERSTACK_ACCESS_KEY']"
-      puts 'you can generate capabilities here https://www.browserstack.com/automate/capabilities?tag=selenium-4'
+      puts "Browserstack specific defaults:"
+      puts "browserstack.local: true"
+      puts "browserstack.debug: true "
+      puts 'you can generate capabilities here https://www.browserstack.com/automate/capabilities?tag=selenium-2-3'
     end
 
     def self.get_all_caps # dry run

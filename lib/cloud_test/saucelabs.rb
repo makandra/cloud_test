@@ -15,14 +15,9 @@ module CloudTest
       @caps['cssSelectorsEnabled'] = true
       @caps['takesScreenshot'] = true
 
-      @caps['max_duration'] = '1200'
-      @caps['javascriptEnabled'] = true
-      @caps['webStorageEnabled'] = true
-      @caps['acceptSslCerts'] = true
-      @caps['extendedDebugging'] = true
 
-      @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS 10'
-      @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
+      @caps['platform']    = 'WINDOWS 10'
+      @caps['browserName'] = 'CHROME'
 
       Capybara.app_host = "http://0.0.0.0:4594"
       Capybara.server_port = 4594
@@ -41,10 +36,14 @@ module CloudTest
 
     def self.list_caps
       Core.list_caps
-      puts "Saucelabs specific ENV variables:"
-      puts "ENV['SL_USERNAME']"
-      puts "ENV['SL_ACCESS_KEY']"
-      puts "ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS 10'"
+      puts "Saucelabs specific defaults:"
+      puts "record_video: true"
+      puts "record_network: true"
+      puts "javascriptEnabled: true"
+      puts "acceptSslCerts: true"
+      puts "webStorageEnabled: true"
+      puts "cssSelectorsEnabled: true"
+      puts "takesScreenshot: true"
       puts 'You can find a caps generator here: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/'
     end
 

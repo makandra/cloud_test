@@ -11,7 +11,6 @@ module CloudTest
       puts '> Running features on crossbrowsertesting.com'
       @caps = Core.get_default_caps
 
-      @caps['max_duration'] = '1200'
       @caps['record_video'] = true
       @caps['record_network'] = true
       @caps["javascriptEnabled"] = true
@@ -19,8 +18,8 @@ module CloudTest
       @caps["acceptSslCerts"] = true
 
 
-      @caps['platform'] = ENV['CLOUDTEST_PLATFORM'].to_s << ENV['CLOUDTEST_OS'].to_s || 'WINDOWS 10'
-      @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
+      @caps['platform'] = 'WINDOWS 10'
+      @caps['browserName'] = 'CHROME'
 
       @caps = merge_caps(@caps, @config, 'crossbrowsertesting')
       if config
@@ -36,9 +35,12 @@ module CloudTest
 
     def self.list_caps # defaults
       Core.list_caps
-      puts "Crossbrwosertesting specific ENV variables:"
-      puts "ENV['CBT_USERNAME']"
-      puts "ENV['CBT_ACCESS_KEY']"
+      puts "CrossBrowserTesting specific defaults:"
+      puts "record_video: true"
+      puts "record_network: true"
+      puts "javascriptEnabled: true"
+      puts "webStorageEnabled: true"
+      puts "acceptSslCerts: true"
       puts 'You can find all available caps https://help.crossbrowsertesting.com/selenium-testing/tutorials/crossbrowsertesting-automation-capabilities/'
     end
 

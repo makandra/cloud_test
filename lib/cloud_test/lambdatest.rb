@@ -16,10 +16,10 @@ module CloudTest
       @caps['network'] = true
 
 
-      @caps['os'] = ENV['CLOUDTEST_OS'] || '10'
-      @caps['platform'] = ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
-      @caps['browserName'] = ENV['CLOUDTEST_BROWSER'] || 'CHROME'
-      @caps['version'] = ENV['CLOUDTEST_BROWSER'] || '72'
+      @caps['os']          = '10'
+      @caps['platform']    = 'WINDOWS'
+      @caps['browserName'] = 'CHROME'
+      @caps['version']     = '72'
 
 
       @caps = merge_caps(@caps, @config, 'lambdatest')
@@ -40,9 +40,14 @@ module CloudTest
 
     def self.list_caps
       Core.list_caps
-      puts "Lambdatest specific ENV variables:"
-      puts "ENV['LT_USERNAME']"
-      puts "ENV['LT_ACCESS_KEY']"
+      puts "Lambdatest specific defaults:"
+      puts "tunnel: true"
+      puts "visual: true"
+      puts "javascriptEnabled: true"
+      puts "webStorageEnabled: true"
+      puts "acceptSslCerts: true"
+      puts "acceptInsecureCerts: true"
+      puts "network: true"
       puts 'You can find a caps generator here: https://www.lambdatest.com/capabilities-generator/'
     end
 

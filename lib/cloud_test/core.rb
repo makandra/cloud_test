@@ -5,21 +5,12 @@ require 'yaml'
 module CloudTest
   class Core
     CONFIG_NAME = 'cloud_test'
-    def self.enabled?
-      ENV.has_key?('CLOUD_TEST').tap do |enabled|
-        if enabled
-          puts 'You have enabled CloudTest!'
-        else
-          puts 'To enable CloutTest please set the CLOUD_TEST env variable to "chrome".'
-        end
-      end
-    end
 
     def self.get_default_caps
       @caps = Hash.new
-      @caps['project'] = ENV['CLOUDTEST_PROJECT'] || File.split(Dir.getwd)[-1] # folder name
-      @caps['build'] = ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
-      @caps['name'] = ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
+      @caps['project'] = File.split(Dir.getwd)[-1] # folder name
+      @caps['build'] =   `git rev-parse HEAD` # HEAD commit hash
+      @caps['name'] =    `git log -1 --pretty=%B` # HEAD commit message
       return @caps
     end
 
@@ -75,13 +66,13 @@ module CloudTest
     end
 
     def self.list_caps # print defaults
-      puts 'You can configure all the env variables below:' + """\n
-      ENV['CLOUDTEST_PROJECT'] || # name of the folder
-      ENV['CLOUDTEST_BUILD'] ||  `git rev-parse HEAD` # HEAD commit hash
-      ENV['CLOUDTEST_NAME'] || `git log -1 --pretty=%B` # HEAD commit message
-      ENV['CLOUDTEST_OS'] || '10'
-      ENV['CLOUDTEST_PLATFORM'] || 'WINDOWS'
-      ENV['CLOUDTEST_BROWSER'] || 'CHROME'"""
+      puts 'These are the defaults:' + """\n
+      PROJECT : # name of the folder
+      BUILD :  `git rev-parse HEAD` # HEAD commit hash
+      NAME : `git log -1 --pretty=%B` # HEAD commit message
+      OS : '10'
+      PLATFORM : 'WINDOWS'
+      BROWSER : 'CHROME'"""
       puts 'Please add additional capabilities in the cloud_test.yml file'
     end
 
