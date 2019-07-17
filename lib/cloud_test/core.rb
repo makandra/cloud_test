@@ -15,9 +15,13 @@ module CloudTest
     end
 
     def self.check_if_input_is_valid?(str)
-      Regexp.new('^@?[A-z]+\d*"$') =~ str
+      #for all relevant config user input only allow an optional '@' for the cucumber_tag, then some letters, followed by
+      # optional digits
+      # this should enhance security
+      Regexp.new('^@?[A-z]+\d*$') =~ str
     end
 
+    # the optional parameter could be deleted, or used if someone does not want to put there credentials in the config
     def self.load_config(env_user='CLOUD_TEST_USER', env_pw='CLOUD_TEST_PW')
       config = Hash.new
 
@@ -35,10 +39,10 @@ module CloudTest
         puts 'Error: I need a config yml file, named ENV["CONFIG_NAME"] or "cloud_test.yml" which has at least a "user" and and "key" pair, thank you!'
       else
         if config.has_key?('user') && config.has_key?('key') && config.has_key?('provider') # check wether all the necessary keys exist
-          list_to_check_input = [config['browsers'].keys, (config['cucumber_tag'] if config.has_key?('cucumber_tag'))].flatten
+          list_to_check_input = [config['browsers'].keys, (config['cucumber_tag'] if config.has_key?('cucumber_tag')), config['provider']].flatten
           list_to_check_input.each do |str|
-            if check_if_input_is_valid?(str)
-              raise "Invalid value: #{str}. Only characters followed by digits are allowed"
+            if !check_if_input_is_valid?(str)
+              raise "Invalid value: #{str}. Only characters followed by digits are allowed!"
             end
           end
           return config
@@ -50,6 +54,7 @@ module CloudTest
     end
 
     def self.register_driver(capsArray, user, key, server)
+      # some debugging options
       if capsArray.has_key?('cloud_test_debug') and capsArray['cloud_test_debug']
         puts "Capybara.app_host = #{Capybara.app_host}"
         list_these_caps capsArray
@@ -66,6 +71,7 @@ module CloudTest
     end
 
     def self.list_caps # print defaults
+      # this output could be reformatted
       puts 'These are the defaults:' + """\n
       PROJECT : # name of the folder
       BUILD :  `git rev-parse HEAD` # HEAD commit hash

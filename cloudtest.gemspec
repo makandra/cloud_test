@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Philipp Häusele"]
   spec.email         = ["philipp.haeusele@makandra.de"]
 
-  spec.summary       = %q{Enables automated Cloud Testing with Browserstack, Crossbrowsertesting, Saucelabs and lambdatest for capybara}
+  spec.summary       = %q{Enables automated Cloud-Testing with Browserstack, Crossbrowsertesting, Saucelabs and lambdatest with cucumber and capybara}
   #spec.description   = %q{TODO: Write a longer description or delete this line.}
   #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
