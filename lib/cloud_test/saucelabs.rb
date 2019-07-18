@@ -37,13 +37,13 @@ module CloudTest
     def self.list_caps
       Core.list_caps
       puts "Saucelabs specific defaults:"
-      puts "record_video: true"
-      puts "record_network: true"
-      puts "javascriptEnabled: true"
-      puts "acceptSslCerts: true"
-      puts "webStorageEnabled: true"
-      puts "cssSelectorsEnabled: true"
-      puts "takesScreenshot: true"
+      puts "\trecord_video: true"
+      puts "\trecord_network: true"
+      puts "\tjavascriptEnabled: true"
+      puts "\tacceptSslCerts: true"
+      puts "\twebStorageEnabled: true"
+      puts "\tcssSelectorsEnabled: true"
+      puts "\ttakesScreenshot: true"
       puts 'You can find a caps generator here: https://wiki.saucelabs.com/display/DOCS/Platform+Configurator#/'
     end
 

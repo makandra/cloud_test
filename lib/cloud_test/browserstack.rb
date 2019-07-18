@@ -49,8 +49,8 @@ module CloudTest
     def self.list_caps # defaults
       Core.list_caps
       puts "Browserstack specific defaults:"
-      puts "browserstack.local: true"
-      puts "browserstack.debug: true "
+      puts "\tbrowserstack.local: true"
+      puts "\tbrowserstack.debug: true "
       puts 'you can generate capabilities here https://www.browserstack.com/automate/capabilities?tag=selenium-2-3'
     end
 

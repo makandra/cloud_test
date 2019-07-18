@@ -36,11 +36,11 @@ module CloudTest
     def self.list_caps # defaults
       Core.list_caps
       puts "CrossBrowserTesting specific defaults:"
-      puts "record_video: true"
-      puts "record_network: true"
-      puts "javascriptEnabled: true"
-      puts "webStorageEnabled: true"
-      puts "acceptSslCerts: true"
+      puts "\trecord_video: true"
+      puts "\trecord_network: true"
+      puts "\tjavascriptEnabled: true"
+      puts "\twebStorageEnabled: true"
+      puts "\tacceptSslCerts: true"
       puts 'You can find all available caps https://help.crossbrowsertesting.com/selenium-testing/tutorials/crossbrowsertesting-automation-capabilities/'
     end
 

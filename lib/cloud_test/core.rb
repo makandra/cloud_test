@@ -72,10 +72,10 @@ module CloudTest
 
     def self.list_caps # print defaults
       # this output could be reformatted
-      puts 'These are the defaults:' + """\n
+      puts 'These are the defaults:' + """
       PROJECT : # name of the folder
-      BUILD :  `git rev-parse HEAD` # HEAD commit hash
-      NAME : `git log -1 --pretty=%B` # HEAD commit message
+      BUILD :  # HEAD commit hash
+      NAME : # HEAD commit message
       OS : '10'
       PLATFORM : 'WINDOWS'
       BROWSER : 'CHROME'"""
@@ -90,10 +90,9 @@ module CloudTest
       else
         puts "Error: No caps"
       end
-      return nil
     end
 
-    def self.copy_keys(caps, config, keys=config.keys) # a small helper method, to copy some keys
+    def self.copy_keys(caps, config, keys=config.keys) # a small helper method, to copy keys
       keys.each do |key|
         caps[key] = config[key]
       end
@@ -139,6 +138,7 @@ module CloudTest
         puts "Error: Please add a valid provider to your config file!"
       end
     end
+
     def self.list_dashboard_link
       puts "link to the dashboard: #{get_provider_class::DASHBOARD_LINK}"
     end

@@ -41,13 +41,13 @@ module CloudTest
     def self.list_caps
       Core.list_caps
       puts "Lambdatest specific defaults:"
-      puts "tunnel: true"
-      puts "visual: true"
-      puts "javascriptEnabled: true"
-      puts "webStorageEnabled: true"
-      puts "acceptSslCerts: true"
-      puts "acceptInsecureCerts: true"
-      puts "network: true"
+      puts "\ttunnel: true"
+      puts "\tvisual: true"
+      puts "\tjavascriptEnabled: true"
+      puts "\twebStorageEnabled: true"
+      puts "\tacceptSslCerts: true"
+      puts "\tacceptInsecureCerts: true"
+      puts "\tnetwork: true"
       puts 'You can find a caps generator here: https://www.lambdatest.com/capabilities-generator/'
     end
 
