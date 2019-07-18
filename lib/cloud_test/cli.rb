@@ -26,13 +26,13 @@ module CloudTest
       CloudTest::Generators::Config.start([config])
     end
 
-    desc "generate", "Puts a sample config yml file into /config directory"
+    desc "generate", "Puts a sample config yml file into /config directory, and additionally put a cloud_test.rb in features/support"
     def generate()
       CloudTest::Generators::Config.start()
       CloudTest::Generators::Support.start()
     end
 
-    desc "start", "Runs cucumber sequentially for all defined browsers. Uses the cucumber tag. With -v redirect all the standard output"
+    desc "start", "Runs bundle exec cucumber sequentially for all defined browsers. Uses the cucumber tag. With -v redirect all the standard output"
     option :v
     def start()
       require 'open3'
@@ -51,6 +51,34 @@ module CloudTest
             puts "Test on browser: #{browser_config_name} was not successful!"
             puts stdout_err
             raise "did not work"
+          end
+        end
+      }
+    end
+
+    desc "each COMMANDS", "Runs the COMMAND sequentially for all defined browsers. With -v redirect all the standard output"
+    option :v
+    option :p, :banner => "<number of parallel tasks>"
+    def each(*commands)
+      require 'open3'
+      config = Core.load_config
+      if options[:p]
+        # code to run tests in parallel
+      end
+      config['browsers'].keys.each { |browser_config_name|
+        Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, commands.join(" ")) do |stdin, stdout_err, wait_thr|
+          if options[:v]
+            while line = stdout_err.gets
+              puts line
+            end
+          end
+          exit_status = wait_thr.value
+          if exit_status == 0
+            puts "Test on browser: #{browser_config_name} was successful!"
+          else
+            puts "Error on browser: #{browser_config_name}!"
+            puts stdout_err.read
+            puts "Error on browser: #{browser_config_name}!"
           end
         end
       }

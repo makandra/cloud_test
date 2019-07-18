@@ -150,6 +150,9 @@ This command will run all tagged scenarios sequantially with all browser configu
 defined in the 'browsers' list in your config file. It run the following command for each browser:
 
     CLOUD_TEST=<browser_config_name> bundle exec cucumber -t <cucumber_tag>
+You can also use the following command to execute your own test-command:
+
+    [bundle exec] cloud_test each [-v] <run> <your> <test-suite> 
 
     
 ## Development
