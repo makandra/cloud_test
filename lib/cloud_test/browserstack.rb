@@ -7,6 +7,7 @@ module CloudTest
     ENV_USER ='BROWSERSTACK_USERNAME'
     ENV_PWD = 'BROWSERSTACK_ACCESS_KEY'
     DASHBOARD_LINK = "https://automate.browserstack.com/dashboard"
+    REST_STATUS_SERVER = "https://api.browserstack.com/automate/sessions/"
 
     def self.init(config=nil)
       @config = config || Core.load_config(ENV_USER, ENV_PWD)

@@ -146,5 +146,37 @@ module CloudTest
     def self.list_dashboard_link
       puts "link to the dashboard: #{get_provider_class::DASHBOARD_LINK}"
     end
+
+    def self.upload_status(failed, session_id, reason="Unknown")
+      config = load_config
+      provider = get_provider_class config
+      unless provider == CloudTest::Browserstack
+        puts "skipping upload, not implementet for your provider yet."
+        return
+      end
+      require 'net/http'
+      require 'uri'
+      require 'json'
+      uri = URI.parse(provider::REST_STATUS_SERVER + session_id + ".json")
+      request = Net::HTTP::Put.new(uri)
+      request.basic_auth(config['user'], config['key'])
+      request.content_type = "application/json"
+      request.body = JSON.dump({
+                                   "status" => failed,
+                                   "reason" => reason
+                               })
+
+      req_options = {
+          use_ssl: uri.scheme == "https",
+      }
+      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+        http.request(request)
+      end
+      if response.code != '200'
+        puts "Response Code: #{response.code}"
+        puts "Status upload error!"
+      end
+
+    end
   end
 end

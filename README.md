@@ -127,7 +127,7 @@ Additionally you need to require 'cloud_test' and set the capybara driver in the
  
     [bundle exec] cloud_test generate
  
-NOTE: cloud_test registers a Capybara driver named ':cloudtest'
+NOTE: cloud_test registers a Capybara driver named ':cloud_test'
 
     require 'cloud_test'
  
@@ -135,7 +135,13 @@ NOTE: cloud_test registers a Capybara driver named ':cloudtest'
       Before do
         Capybara.current_driver = :cloud_test
       end
+      After do |scenario|
+          if scenario.failed?
+              CloudTest.upload_status_to_provider "failed", page.driver.browser.session_id, scenario.exception
+          end
+        end
     end
+The After hook updates the status in the dashboard of your provider.
 
 If you want to test your whether your login credentials work, you can use the
 following command:
@@ -163,7 +169,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cloudtest. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cloud_test. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -171,4 +177,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the Cloudtest project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cloudtest/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the Cloudtest project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/cloud_test/blob/master/CODE_OF_CONDUCT.md).
