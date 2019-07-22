@@ -22,7 +22,7 @@ module CloudTest
       @caps['browserName'] = 'CHROME'
 
       @caps = merge_caps(@caps, @config, 'crossbrowsertesting')
-      if config
+      if config.present?
         start()
       end
     end

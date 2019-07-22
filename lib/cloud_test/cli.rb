@@ -58,13 +58,9 @@ module CloudTest
 
     desc "each COMMANDS", "Runs the COMMAND sequentially for all defined browsers. With -v redirect all the standard output"
     option :v
-    option :p, :banner => "<number of parallel tasks>"
     def each(*commands)
       require 'open3'
       config = Core.load_config
-      if options[:p]
-        # code to run tests in parallel
-      end
       config['browsers'].keys.each { |browser_config_name|
         Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, commands.join(" ")) do |stdin, stdout_err, wait_thr|
           if options[:v]
@@ -97,40 +93,40 @@ module CloudTest
       config = CloudTest::Core.load_config
       request, uri, request, server = Hash.new
       if config.has_key?('provider') && config.has_key?('user') && config.has_key?('key')
-      case config.delete 'provider'.to_s.downcase
-        when 'browserstack', 'bs', 'b'
-          server = "https://www.browserstack.com/local/v1/list?auth_token=#{config['key']}&last=1"
-        when 'lambdatest', 'lt', 'l'
-          server = "https://api.lambdatest.com/automation/api/v1/tunnels"
-          uri = URI.parse(server)
-          request = Net::HTTP::Get.new(uri)
-          request.basic_auth(config['user'], config['key'])
-        when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
-          server = "https://#{config['user']}:#{config['key']}@crossbrowsertesting.com/api/v3/tunnels"
-        when 'saucelabs', 'sauce', 'sc', 'sl', 's'
-          server = "https://saucelabs.com/rest/v1/#{config['user']}/tunnels"
-          uri = URI.parse(server)
-          request = Net::HTTP::Get.new(uri)
-          request.basic_auth(config['user'], config['key'])
-      else
-        puts "Unknown provider!"
-        return
-      end
-      uri ||= URI.parse(server)
-      request ||= Net::HTTP::Get.new(uri)
-      request["Accept"] = "application/json"
-      req_options = {
-          use_ssl: uri.scheme == "https",
-      }
-      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-        http.request(request)
-      end
-      if response.code == '200'
-        puts "Connection successful!"
-      else
-        puts "Connection was not successful! :("
-        puts response.code
-      end
+        case config.delete 'provider'.to_s.downcase
+          when 'browserstack', 'bs', 'b'
+            server = "https://www.browserstack.com/local/v1/list?auth_token=#{config['key']}&last=1"
+          when 'lambdatest', 'lt', 'l'
+            server = "https://api.lambdatest.com/automation/api/v1/tunnels"
+            uri = URI.parse(server)
+            request = Net::HTTP::Get.new(uri)
+            request.basic_auth(config['user'], config['key'])
+          when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
+            server = "https://#{config['user']}:#{config['key']}@crossbrowsertesting.com/api/v3/tunnels"
+          when 'saucelabs', 'sauce', 'sc', 'sl', 's'
+            server = "https://saucelabs.com/rest/v1/#{config['user']}/tunnels"
+            uri = URI.parse(server)
+            request = Net::HTTP::Get.new(uri)
+            request.basic_auth(config['user'], config['key'])
+        else
+          puts "Unknown provider!"
+          return
+        end
+        uri ||= URI.parse(server)
+        request ||= Net::HTTP::Get.new(uri)
+        request["Accept"] = "application/json"
+        req_options = {
+            use_ssl: uri.scheme == "https",
+        }
+        response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+          http.request(request)
+        end
+        if response.code == '200'
+          puts "Connection successful!"
+        else
+          puts "Connection was not successful! :("
+          puts response.code
+        end
       else
         puts "You have not all necessary keys in your config file. `provider`, `user`, `key` are necessary"
       end

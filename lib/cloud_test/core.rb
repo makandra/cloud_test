@@ -112,6 +112,10 @@ module CloudTest
       end
       if config.has_key?('browsers')
         if config['browsers'].kind_of?(Hash)
+          if browser.present? && config['browsers'][browser].nil?
+            puts "There is no browser with the key:#{browser} in your config file!"
+            raise "No matching browser key found!"
+          end
           caps = caps.merge(config['browsers'][browser || config['browsers'].keys[0]])
         else
           caps = caps.merge(config['browsers'])
