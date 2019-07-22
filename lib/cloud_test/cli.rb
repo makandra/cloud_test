@@ -80,12 +80,6 @@ module CloudTest
       }
     end
 
-    desc "test-config", "Test whether the config file is configured properly"
-    def test(type)
-      config = CloudTest::Core.load_config
-      config.has_key?('provider')
-    end
-
     desc "test-connection", "Test whether the provider and credentials work, by connectiong to the api"
     def test_connection()
       require 'net/http'
