@@ -36,10 +36,9 @@ module CloudTest
       end
       # Code to start browserstack local (tunnel) before start of test
       @bs_local = BrowserStack::Local.new
-      bs_local_args = {"key" => "#{@config['key']}", "logfile" => "log/browserstack-local-logs.txt"}
+      bs_local_args = {"key" => "#{@config['key']}", "logfile" => "log/browserstack-local-logs.log"}
       @bs_local.start(bs_local_args)
       register_driver(@caps, @config['user'], @config['key'], SERVER)
-
       # Code to stop browserstack local after end of test
       at_exit do
         @bs_local.stop unless @bs_local.nil?
