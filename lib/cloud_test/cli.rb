@@ -32,14 +32,14 @@ module CloudTest
       CloudTest::Generators::Support.start()
     end
 
-    desc "start", "Runs bundle exec cucumber sequentially for all defined browsers. Uses the cucumber tag. With -v redirect all the standard output"
-    option :v
+    desc "start", "Runs bundle exec cucumber sequentially for all defined browsers. Uses the cucumber tag. With -q hide output."
+    option :q
     def start()
       require 'open3'
       config = Core.load_config
       config['browsers'].keys.each { |browser_config_name|
         Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, "bundle" ,"exec", "cucumber", "-t","#{config['cucumber_tag'].to_s}") do |stdin, stdout_err, wait_thr|
-          if options[:v]
+          unless options[:q]
             while line = stdout_err.gets
               puts line
             end
@@ -56,14 +56,14 @@ module CloudTest
       }
     end
 
-    desc "each COMMANDS", "Runs the COMMAND sequentially for all defined browsers. With -v redirect all the standard output"
-    option :v
+    desc "each COMMANDS", "Runs the COMMAND sequentially for all defined browsers. With -q hide output."
+    option :q
     def each(*commands)
       require 'open3'
       config = Core.load_config
       config['browsers'].keys.each { |browser_config_name|
         Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, commands.join(" ")) do |stdin, stdout_err, wait_thr|
-          if options[:v]
+          unless options[:q]
             while line = stdout_err.gets
               puts line
             end
