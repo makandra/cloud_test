@@ -137,11 +137,12 @@ NOTE: cloud_test registers a Capybara driver named ':cloud_test'
       end
       After do |scenario|
           if scenario.failed?
-              CloudTest.upload_status_to_provider "failed", page.driver.browser.session_id, scenario.exception
+              CloudTest.upload_status_to_provider true, page.driver.browser.session_id, scenario.exception
           end
         end
     end
-The After hook updates the status in the dashboard of your provider.
+The After hook updates the status in the dashboard of your provider. 
+So far this is implemented for browserstack and crossbrowsertesting.
 
 If you want to test your whether your login credentials work, you can use the
 following command:
@@ -151,14 +152,14 @@ following command:
 To automate things even further you can define a cucumber tag in the config file 
 (default: '@cloudtest'), tag all scenarios you wish to run and run the following command:
 
-    [bundle exec] cloud_test start [-v]
+    [bundle exec] cloud_test start [-q]
 This command will run all tagged scenarios sequantially with all browser configurations
 defined in the 'browsers' list in your config file. It run the following command for each browser:
 
     CLOUD_TEST=<browser_config_name> bundle exec cucumber -t <cucumber_tag>
 You can also use the following command to execute your own test-command:
 
-    [bundle exec] cloud_test each [-v] <run> <your> <test-suite> 
+    [bundle exec] cloud_test each [-q] <run> <your> <test-suite> 
 
     
 ## Development

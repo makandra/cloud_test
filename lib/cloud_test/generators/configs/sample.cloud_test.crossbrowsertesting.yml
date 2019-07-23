@@ -1,0 +1,33 @@
+provider: 'crossbrowsertesting'
+user: "username" # these may not be the login credentials
+key: "password"
+cloud_test_debug: false
+common_caps:
+  "acceptSslCerts": true # allow self signed certificates
+crossbrowsertesting:
+  'record_video' : 'true'
+  'record_network' : 'true'
+  'javascriptEnabled' : 'true'
+  'webStorageEnabled' : 'true'
+  'max_duration' : 1200
+browsers:
+  chrome_android:
+    browserName: "Chrome"
+    deviceName: "Galaxy S8"
+    platformVersion: "8.0"
+    platformName: "Android"
+  chrome:
+    browserName: 'Chrome'
+    version: '75x64'
+    platform: 'Windows 10'
+  safari_mobile:
+    browserName : 'Safari'
+    deviceName : 'iPhone XR Simulator'
+    platformVersion : '12.0'
+    platformName : 'iOS'
+    deviceOrientation : 'portrait'
+  safari:
+    browserName : 'Chrome'
+    version : '75x64'
+    platform : 'Mac OSX 10.14'
+cucumber_tag: "@cloudtest"

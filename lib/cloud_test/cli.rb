@@ -27,8 +27,19 @@ module CloudTest
     end
 
     desc "generate", "Puts a sample config yml file into /config directory, and additionally put a cloud_test.rb in features/support"
+    option :provider, :aliases => '-p', :default => 'browserstack'
     def generate()
-      CloudTest::Generators::Config.start()
+      case options[:provider].to_s.downcase
+      when 'lambdatest', 'lt', 'l'
+        provider = 'browserstack'
+      when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
+        provider = 'crossbrowsertesting'
+      when 'saucelabs', 'sauce', 'sc', 'sl', 's'
+        provider = 'browserstack'
+      else
+        provider = 'browserstack'
+      end
+      CloudTest::Generators::Config.start([provider])
       CloudTest::Generators::Support.start()
     end
 
