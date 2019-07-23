@@ -9,9 +9,6 @@ module CloudTest
   end
 
   def self.upload_status_to_provider(status, session_id, reason="No exception!")
-    unless session_id =~ Regexp.new('^[0-9a-z]{41}$')
-      raise "session_id is invalid!"
-    end
     Core.upload_status status, session_id, reason
   end
   if enabled?

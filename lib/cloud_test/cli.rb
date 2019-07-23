@@ -96,7 +96,10 @@ module CloudTest
             request = Net::HTTP::Get.new(uri)
             request.basic_auth(config['user'], config['key'])
           when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
-            server = "https://#{config['user']}:#{config['key']}@crossbrowsertesting.com/api/v3/tunnels"
+            server = "https://crossbrowsertesting.com/api/v3/tunnels"
+            uri = URI.parse(server)
+            request = Net::HTTP::Get.new(uri)
+            request.basic_auth(config['user'].sub("@", "%40"), config['key'])
           when 'saucelabs', 'sauce', 'sc', 'sl', 's'
             server = "https://saucelabs.com/rest/v1/#{config['user']}/tunnels"
             uri = URI.parse(server)

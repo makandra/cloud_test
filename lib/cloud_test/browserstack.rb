@@ -59,5 +59,18 @@ module CloudTest
       puts "Capabilities: "
       Core.list_these_caps(@caps)
     end
+
+    def self.get_status_msg(failed, reason)
+      {
+          "status" => failed ? "failed" : "passed",
+          "reason" => reason
+      }
+    end
+
+    def self.check_session_id(session_id)
+      unless session_id =~ Regexp.new('^[0-9a-z]{41}$')
+        raise "session_id is invalid!"
+      end
+    end
   end
 end

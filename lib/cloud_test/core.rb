@@ -9,8 +9,8 @@ module CloudTest
     def self.get_default_caps
       @caps = Hash.new
       @caps['project'] = File.split(Dir.getwd)[-1] # folder name
-      @caps['build'] =   `git rev-parse HEAD` # HEAD commit hash
-      @caps['name'] =    `git log -1 --pretty=%B` # HEAD commit message
+      @caps['build'] =   `git rev-parse HEAD || echo buildname` # HEAD commit hash
+      @caps['name'] =    `git log -1 --pretty=%B || echo testname` # HEAD commit message
       return @caps
     end
 
@@ -55,19 +55,19 @@ module CloudTest
 
     def self.register_driver(capsArray, user, key, server)
       # some debugging options
+      url =  "https://#{user.sub("@", "%40")}:#{key}@#{server}"
       if capsArray.has_key?('cloud_test_debug') and capsArray['cloud_test_debug']
         puts "Capybara.app_host = #{Capybara.app_host}"
+        puts "Hub url: #{url}"
         list_these_caps capsArray
       end
-
-      Capybara.register_driver :cloud_test do |app|
-        Capybara::Selenium::Driver.new(app,
+        Capybara.register_driver :cloud_test do |app|
+          Capybara::Selenium::Driver.new(app,
                                        :browser => :remote,
-                                       :url => "https://#{user}:#{key}@#{server}",
+                                       :url => url,
                                        :desired_capabilities => capsArray
-        )
-      end
-
+          )
+        end
     end
 
     def self.list_caps # print defaults
@@ -150,22 +150,20 @@ module CloudTest
     def self.upload_status(failed, session_id, reason="Unknown")
       config = load_config
       provider = get_provider_class config
-      unless provider == CloudTest::Browserstack
+      provider.check_session_id session_id
+      puts session_id
+      unless provider::REST_STATUS_SERVER.present?
         puts "skipping upload, not implementet for your provider yet."
         return
       end
       require 'net/http'
       require 'uri'
       require 'json'
-      uri = URI.parse(provider::REST_STATUS_SERVER + session_id + ".json")
+      uri = URI.parse(provider::REST_STATUS_SERVER + session_id )
       request = Net::HTTP::Put.new(uri)
       request.basic_auth(config['user'], config['key'])
       request.content_type = "application/json"
-      request.body = JSON.dump({
-                                   "status" => failed,
-                                   "reason" => reason
-                               })
-
+      request.body = JSON.dump(provider.get_status_msg(failed, reason))
       req_options = {
           use_ssl: uri.scheme == "https",
       }
