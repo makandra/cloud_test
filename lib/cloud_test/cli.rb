@@ -139,6 +139,12 @@ module CloudTest
         puts "You have not all necessary keys in your config file. `provider`, `user`, `key` are necessary"
       end
     end
+    desc 'version', 'Display version'
+    map %w[-v --version] => :version
+
+    def version
+      say "cloud_test version: #{CloudTest::VERSION}"
+    end
   end
 end
 

@@ -41,7 +41,7 @@ as 'provider' value.
 
 You can generate the following example config file to the config folder with:
 
-    [bundle exec] cloud_test generate [config]
+    [bundle exec] cloud_test generate [-p PROVIDER]
     
 Example cloud_test.config.yml:
 
@@ -170,7 +170,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cloud_test. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/makandra/cloud_test. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
