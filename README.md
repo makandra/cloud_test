@@ -125,7 +125,7 @@ Additionally you need to require 'cloud_test' and set the capybara driver in the
  features/support/cloud_test.rb file as follows:
  This will be generated automatically if you run:
  
-    [bundle exec] cloud_test generate
+    [bundle exec] cloud_test generate [-p PROVIDER]
  
 NOTE: cloud_test registers a Capybara driver named ':cloud_test'
 

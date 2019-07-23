@@ -1,0 +1,22 @@
+provider: "lambdatest"
+user: "username" # these may not be the login credentials
+key: "password"
+cloud_test_debug: false
+common_caps:
+  "acceptSslCerts": true # allow self signed certificates
+lambdatest:
+  tunnel : true
+  console : true
+  network : true
+  visual : true
+browsers:
+  IE11:
+    platform : "Windows 7"
+    browserName : "Internet Explorer"
+    version : "11.0"
+    ie.compatibility : 11001
+  SAFARI:
+    platform : "macOS Mojave"
+    browserName : "Safari"
+    version : "12.0"
+cucumber_tag: "@cloudtest"

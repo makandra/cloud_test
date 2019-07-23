@@ -31,11 +31,11 @@ module CloudTest
     def generate()
       case options[:provider].to_s.downcase
       when 'lambdatest', 'lt', 'l'
-        provider = 'browserstack'
+        provider = 'lambdatest'
       when 'crossbrowsertesting', 'cbs', 'ct', 'cbt', 'c'
         provider = 'crossbrowsertesting'
       when 'saucelabs', 'sauce', 'sc', 'sl', 's'
-        provider = 'browserstack'
+        provider = 'saucelabs'
       else
         provider = 'browserstack'
       end
