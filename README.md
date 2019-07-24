@@ -161,6 +161,9 @@ You can also use the following command to execute your own test-command:
 
     [bundle exec] cloud_test each [-q] <run> <your> <test-suite> 
 
+You can get a list of all available commands with a description if you run:
+    
+    [bundle exec] cloud_test
     
 ## Development
 

@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Philipp Häusele"]
   spec.email         = ["philipp.haeusele@makandra.de"]
 
-  spec.summary       = %q{Enables automated Cloud-Testing with Browserstack, Crossbrowsertesting, Saucelabs and lambdatest based on cucumber and capybara}
-  #spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Enables automated Cloud-Testing with various providers. }
+  spec.description   = %q{Enables cross-browser-testing with by the integration of the following providers Browserstack, Crossbrowsertesting, Saucelabs and lambdatest. Based on cucumber and capybara}
   spec.homepage      = "https://github.com/makandra/cloud_test"
   spec.license       = "MIT"
 
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
     spec.metadata["allowed_push_host"] = "RubyGems.org"
 
     spec.metadata["homepage_uri"] = "https://github.com/makandra/cloud_test"
-    spec.metadata["source_code_uri"] = "https://github.com/makandra/cloud_test"#TODO: Put your gem's public repo URL here."
-    spec.metadata["changelog_uri"] = "https://github.com/makandra/cloud_test/CHANGELOG.md"#TODO: Put your gem's CHANGELOG.md URL here."
+    spec.metadata["source_code_uri"] = "https://github.com/makandra/cloud_test"
+    spec.metadata["changelog_uri"] = "https://github.com/makandra/cloud_test/CHANGELOG.md"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
