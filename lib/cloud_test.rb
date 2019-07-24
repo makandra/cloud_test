@@ -20,6 +20,7 @@ module CloudTest
     if enabled?
       if $!.nil? || $!.is_a?(SystemExit) && $!.success? # if test was successful
         Core.list_dashboard_link
+        CloudTest.upload_status_to_provider false, page.driver.browser.session_id
       else
         code = $!.is_a?(SystemExit) ? $!.status : 1 #if test was not successful, keep exit code
         Core.list_dashboard_link

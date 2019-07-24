@@ -26,6 +26,6 @@ browsers:
     deviceOrientation : 'portrait'
   safari:
     browserName : 'Safari'
-    version : '75x64'
+    version : '12'
     platform : 'Mac OSX 10.14'
 cucumber_tag: "@cloudtest"
