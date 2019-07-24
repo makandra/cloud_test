@@ -14,7 +14,7 @@ browsers:
     platformName: "Android"
   chrome:
     browserName: 'Chrome'
-    version: '75x64'
+    version: '74x64' # there may be problems with version 75
     platform: 'Windows 10'
     chromeOptions:
       w3c: false

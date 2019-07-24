@@ -3,7 +3,7 @@ module CloudTest
   class CrossBrowserTesting < Core
 
     SERVER = "hub.crossbrowsertesting.com/wd/hub"
-    DASHBOARD_LINK = "https://app.crossbrowsertesting.com/"
+    DASHBOARD_LINK = "https://app.crossbrowsertesting.com/selenium/results"
     REST_STATUS_SERVER = "https://crossbrowsertesting.com/api/v3/selenium/"
 
     def self.init(config=nil)
