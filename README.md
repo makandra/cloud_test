@@ -24,7 +24,7 @@ And then execute:
 Or install it yourself as:
 
     $ gem install cloud_test
-##Configuration
+## Configuration
 You can configure cloud_test in the
 
     config/cloud_test.yml file 
@@ -122,12 +122,10 @@ The value can be a browser_caps configuration key (e.g. IE, chrome, my_ie_browse
 
 
 Additionally you need to require 'cloud_test' and set the capybara driver in the
- features/support/cloud_test.rb file as follows:
- This will be generated automatically if you run:
+ features/support/cloud_test.rb file as follows, it can be generated automatically if you run:
  
     [bundle exec] cloud_test generate [-p PROVIDER]
  
-NOTE: cloud_test registers a Capybara driver named ':cloud_test'
 
     require 'cloud_test'
  
@@ -141,8 +139,10 @@ NOTE: cloud_test registers a Capybara driver named ':cloud_test'
           end
         end
     end
+NOTE: cloud_test registers a Capybara driver named ':cloud_test'.
+
 The After hook updates the status in the dashboard of your provider. 
-So far this is implemented for browserstack and crossbrowsertesting.
+Currently this is implemented for browserstack and crossbrowsertesting.
 
 If you want to test your whether your login credentials work, you can use the
 following command:
@@ -154,7 +154,7 @@ To automate things even further you can define a cucumber tag in the config file
 
     [bundle exec] cloud_test start [-q]
 This command will run all tagged scenarios sequantially with all browser configurations
-defined in the 'browsers' list in your config file. It run the following command for each browser:
+defined in the 'browsers' list in your config file. It runs the following command for each browser:
 
     CLOUD_TEST=<browser_config_name> bundle exec cucumber -t <cucumber_tag>
 You can also use the following command to execute your own test-command:
