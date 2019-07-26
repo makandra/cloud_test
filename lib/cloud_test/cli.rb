@@ -43,7 +43,7 @@ module CloudTest
       CloudTest::Generators::Support.start()
     end
 
-    desc "start", "Runs bundle exec cucumber sequentially for all defined browsers. Uses the cucumber tag. With -q hide output."
+    desc "cucumber", "Runs bundle exec cucumber sequentially for all defined browsers. Uses the cucumber tag. With -q hide output."
     option :q
     def start()
       require 'open3'

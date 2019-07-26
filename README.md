@@ -152,7 +152,7 @@ following command:
 To automate things even further you can define a cucumber tag in the config file 
 (default: '@cloudtest'), tag all scenarios you wish to run and run the following command:
 
-    [bundle exec] cloud_test start [-q]
+    [bundle exec] cloud_test cucumber [-q]
 This command will run all tagged scenarios sequantially with all browser configurations
 defined in the 'browsers' list in your config file. It runs the following command for each browser:
 
