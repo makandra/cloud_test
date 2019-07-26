@@ -8,8 +8,8 @@ module CloudTest
     ENV.has_key?('CLOUD_TEST')
   end
 
-  def self.upload_status_to_provider(status, session_id, reason="No exception!")
-    Core.upload_status status, session_id, reason
+  def self.upload_status_to_provider(success:, session_id:, reason: "Unknown")
+    Core.upload_status success: options[:success], session_id: options[:session_id], reason: options[:reason]
   end
   if enabled?
     config = Core.load_config

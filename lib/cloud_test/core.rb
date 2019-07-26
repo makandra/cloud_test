@@ -147,11 +147,11 @@ module CloudTest
       puts "link to the dashboard: #{get_provider_class::DASHBOARD_LINK}"
     end
 
-    def self.upload_status(failed, session_id, reason="Unknown")
+    def self.upload_status(success:, session_id:, reason: "Unknown")
       config = load_config
       provider = get_provider_class config
-      provider.check_session_id session_id
-      puts session_id
+      provider.check_session_id options[:session_id]
+      puts options[:session_id]
       unless provider::REST_STATUS_SERVER.present?
         puts "skipping upload, not implementet for your provider yet."
         return
@@ -159,11 +159,11 @@ module CloudTest
       require 'net/http'
       require 'uri'
       require 'json'
-      uri = URI.parse(provider::REST_STATUS_SERVER + session_id )
+      uri = URI.parse(provider::REST_STATUS_SERVER + options[:session_id] )
       request = Net::HTTP::Put.new(uri)
       request.basic_auth(config['user'], config['key'])
       request.content_type = "application/json"
-      request.body = JSON.dump(provider.get_status_msg(failed, reason))
+      request.body = JSON.dump(provider.get_status_msg(options[:success], options[:reason]))
       req_options = {
           use_ssl: uri.scheme == "https",
       }
