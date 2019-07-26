@@ -62,13 +62,14 @@ module CloudTest
 
     def self.get_status_msg(failed, reason)
       {
-          "status" => failed ? "failed" : "passed",
+          "status" => failed ? "passed" : "failed",
           "reason" => reason
       }
     end
 
     def self.check_session_id(session_id)
-      unless session_id =~ Regexp.new('^[0-9a-z]{41}$')
+      unless session_id =~ Regexp.new('^[0-9a-z]{40}$')
+        puts session_id << "length: " << session_id.length
         raise "session_id is invalid!"
       end
     end

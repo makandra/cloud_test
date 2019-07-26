@@ -1,4 +1,13 @@
 #Changelog
+
+## 1.0.7
+
+- bug fixes for browserstack
+## 1.0.6
+
+- rename `cloud_test start` to `cloud_test cucumber`
+- rename sample cucumber tag `@cloudtest` to `@cloud_test`
+- improve the upload api, make it more explicit with named params
 ## 1.0.5
 
 - improve the README.md
