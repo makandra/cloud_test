@@ -9,7 +9,7 @@ module CloudTest
   end
 
   def self.upload_status_to_provider(success:, session_id:, reason: "Unknown")
-    Core.upload_status success: options[:success], session_id: options[:session_id], reason: options[:reason]
+      Core.upload_status success: success, session_id: session_id, reason: reason
   end
   if enabled?
     config = Core.load_config

@@ -23,7 +23,7 @@ module CloudTest
       Capybara.server_port = 4594
 
       @caps = merge_caps(@caps, @config, 'saucelabs')
-      if config.present?
+      if !config.nil?
         start()
       end
     end

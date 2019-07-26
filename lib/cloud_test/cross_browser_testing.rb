@@ -19,7 +19,7 @@ module CloudTest
       @caps["acceptSslCerts"] = true
 
       @caps = merge_caps(@caps, @config, 'crossbrowsertesting')
-      if config.present?
+      if !config.nil?
         start()
       end
     end
@@ -50,16 +50,17 @@ module CloudTest
       list_these_caps(@caps)
     end
 
-    def self.get_status_msg(failed, reason)
+    def self.get_status_msg(success, reason)
       {
           "action" => "set_score",
-          "score" => failed ? "fail" : "pass",
+          "score" => success ? "pass" : "fail",
           "description" => reason
       }
     end
 
     def self.check_session_id(session_id)
-      unless session_id =~ Regexp.new('^[0-9a-z]{32}$')
+      unless session_id =~ Regexp.new('^([0-9a-z]{32})|([0-9a-z]|-){36}$')
+        puts session_id, session_id.length
         raise "session_id is invalid!"
       end
     end

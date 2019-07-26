@@ -112,7 +112,7 @@ module CloudTest
       end
       if config.has_key?('browsers')
         if config['browsers'].kind_of?(Hash)
-          if browser.present? && config['browsers'][browser].nil?
+          if !browser.nil? && config['browsers'][browser].nil?
             puts "There is no browser with the key:#{browser} in your config file!"
             raise "No matching browser key found!"
           end
@@ -150,8 +150,8 @@ module CloudTest
     def self.upload_status(success:, session_id:, reason: "Unknown")
       config = load_config
       provider = get_provider_class config
-      provider.check_session_id options[:session_id]
-      puts options[:session_id]
+      provider.check_session_id session_id
+      puts session_id
       unless provider::REST_STATUS_SERVER.present?
         puts "skipping upload, not implementet for your provider yet."
         return
@@ -159,11 +159,11 @@ module CloudTest
       require 'net/http'
       require 'uri'
       require 'json'
-      uri = URI.parse(provider::REST_STATUS_SERVER + options[:session_id] )
+      uri = URI.parse(provider::REST_STATUS_SERVER + session_id )
       request = Net::HTTP::Put.new(uri)
       request.basic_auth(config['user'], config['key'])
       request.content_type = "application/json"
-      request.body = JSON.dump(provider.get_status_msg(options[:success], options[:reason]))
+      request.body = JSON.dump(provider.get_status_msg(success, reason))
       req_options = {
           use_ssl: uri.scheme == "https",
       }

@@ -23,7 +23,7 @@ module CloudTest
 
 
       @caps = merge_caps(@caps, @config, 'lambdatest')
-      if config.present?
+      if !config.nil?
         start()
       end
     end
