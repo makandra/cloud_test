@@ -28,4 +28,4 @@ browsers:
     browserName : 'Safari'
     version : '12'
     platform : 'Mac OSX 10.14'
-cucumber_tag: "@cloudtest"
+cucumber_tag: "@cloud_test"

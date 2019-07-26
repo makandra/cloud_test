@@ -11,4 +11,4 @@ browsers:
   CHROME:
     platform : 'Windows 10'
     version : '75.0'
-cucumber_tag: "@cloudtest"
+cucumber_tag: "@cloud_test"

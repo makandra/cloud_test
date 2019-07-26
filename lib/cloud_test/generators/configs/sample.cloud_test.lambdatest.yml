@@ -19,4 +19,4 @@ browsers:
     platform : "macOS Mojave"
     browserName : "Safari"
     version : "12.0"
-cucumber_tag: "@cloudtest"
+cucumber_tag: "@cloud_test"

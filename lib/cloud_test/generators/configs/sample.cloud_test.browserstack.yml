@@ -17,4 +17,4 @@ browsers:
     "browser": "chrome"
     "browser_version": "75.0"
     "os": "Windows"
-cucumber_tag: "@cloudtest"
+cucumber_tag: "@cloud_test"
