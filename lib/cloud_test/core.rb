@@ -1,6 +1,7 @@
 require 'selenium/webdriver'
 require 'capybara'
 require 'yaml'
+require_relative 'util'
 
 module CloudTest
   class Core
@@ -18,7 +19,7 @@ module CloudTest
       #for all relevant config user input only allow an optional '@' for the cucumber_tag, then some letters, followed by
       # optional digits
       # this should enhance security
-      Regexp.new('^@?[A-z]+\d*$') =~ str
+      Regexp.new('^@?[A-z\-_]+\d*$') =~ str
     end
 
     # the optional parameter could be deleted, or used if someone does not want to put there credentials in the config
@@ -53,21 +54,23 @@ module CloudTest
       end
     end
 
-    def self.register_driver(capsArray, user, key, server)
-      # some debugging options
+    def self.register_driver(capsArray, user, key, server, options = nil)
       url =  "https://#{user.sub("@", "%40")}:#{key}@#{server}"
+      driver_config = {
+        :browser => :remote,
+        :url => url,
+        :desired_capabilities => capsArray,
+      }
+      driver_config[:options] = options if options
+
       if capsArray.has_key?('cloud_test_debug') and capsArray['cloud_test_debug']
         puts "Capybara.app_host = #{Capybara.app_host}"
         puts "Hub url: #{url}"
         list_these_caps capsArray
       end
-        Capybara.register_driver :cloud_test do |app|
-          Capybara::Selenium::Driver.new(app,
-                                       :browser => :remote,
-                                       :url => url,
-                                       :desired_capabilities => capsArray
-          )
-        end
+      Capybara.register_driver :cloud_test do |app|
+        Capybara::Selenium::Driver.new(app, **driver_config)
+      end
     end
 
     def self.list_caps # print defaults
@@ -144,14 +147,13 @@ module CloudTest
     end
 
     def self.list_dashboard_link
-      puts "link to the dashboard: #{get_provider_class::DASHBOARD_LINK}"
+      puts "Test run dashboard: #{get_provider_class::DASHBOARD_LINK}"
     end
 
     def self.upload_status(success:, session_id:, reason: "Unknown")
       config = load_config
       provider = get_provider_class config
       provider.check_session_id session_id
-      puts session_id
       unless provider::REST_STATUS_SERVER.present?
         puts "skipping upload, not implementet for your provider yet."
         return
