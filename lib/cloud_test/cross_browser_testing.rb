@@ -9,7 +9,7 @@ module CloudTest
     def self.init(config=nil)
       @config = config || load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
 
-      puts '> Running features on crossbrowsertesting.com'
+      puts "> Running features on #{CloudTest::Util.colorize('crossbrowsertesting.com', :light_blue)}"
       @caps = Core.get_default_caps
 
       @caps['record_video'] = true
@@ -24,8 +24,8 @@ module CloudTest
       end
     end
     def self.start
-      Capybara.app_host = "http://local:5555"
-      Capybara.server_port = 5555
+      Capybara.server_port ||= 5555
+      Capybara.app_host = "http://lvh.me:#{Capybara.server_port}"
       register_driver(@caps, @config['user'], @config['key'], SERVER)
     end
 
@@ -59,9 +59,8 @@ module CloudTest
     end
 
     def self.check_session_id(session_id)
-      unless session_id =~ Regexp.new('^([0-9a-z]{32})|([0-9a-z]|-){36}$')
-        puts session_id, session_id.length
-        raise "session_id is invalid!"
+      unless session_id =~ Regexp.new('^([0-9A-z]{32})|([0-9A-z]|-){36}$')
+        raise "session_id #{session_id} is invalid!"
       end
     end
 

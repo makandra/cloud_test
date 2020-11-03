@@ -1,6 +1,7 @@
 require 'selenium/webdriver'
 require 'capybara'
 require 'yaml'
+require_relative 'util'
 
 module CloudTest
   class Core
@@ -144,14 +145,13 @@ module CloudTest
     end
 
     def self.list_dashboard_link
-      puts "link to the dashboard: #{get_provider_class::DASHBOARD_LINK}"
+      puts "Test run dashboard: #{get_provider_class::DASHBOARD_LINK}"
     end
 
     def self.upload_status(success:, session_id:, reason: "Unknown")
       config = load_config
       provider = get_provider_class config
       provider.check_session_id session_id
-      puts session_id
       unless provider::REST_STATUS_SERVER.present?
         puts "skipping upload, not implementet for your provider yet."
         return

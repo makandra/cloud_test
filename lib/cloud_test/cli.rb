@@ -6,7 +6,6 @@ require_relative 'lambdatest'
 require_relative 'cross_browser_testing'
 require_relative 'saucelabs'
 
-
 module CloudTest
   class CLI < Thor
     desc "list-caps PROVIDER", "Shows the currently applied capabilities of that provider"
@@ -49,7 +48,7 @@ module CloudTest
       require 'open3'
       config = Core.load_config
       config['browsers'].keys.each { |browser_config_name|
-        Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, "bundle" ,"exec", "cucumber", "-t","#{config['cucumber_tag'].to_s}") do |stdin, stdout_err, wait_thr|
+        Open3.popen2e({'CLOUD_TEST' =>browser_config_name.to_s}, "bundle" ,"exec", "cucumber", "-t","#{config['cucumber_tag'].to_s}", '-c') do |stdin, stdout_err, wait_thr|
           unless options[:q]
             while line = stdout_err.gets
               puts line
@@ -57,11 +56,9 @@ module CloudTest
           end
           exit_status = wait_thr.value
           if exit_status == 0
-            puts "Test on browser: #{browser_config_name} was successful!"
+            puts "#{CloudTest::Util.colorize('Test on browser:', :green)} #{CloudTest::Util.colorize(browser_config_name, :light_blue)} #{CloudTest::Util.colorize('was successful', :green)}!"
           else
-            puts "Test on browser: #{browser_config_name} was not successful!"
-            puts stdout_err
-            raise "did not work"
+            puts "#{CloudTest::Util.colorize('Test on browser:', :red)} #{CloudTest::Util.colorize(browser_config_name, :light_blue)} #{CloudTest::Util.colorize('failed', :red)}!"
           end
         end
       }

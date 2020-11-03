@@ -28,7 +28,7 @@ module CloudTest
     end
 
     def self.start
-      puts '> Running features on browserstack.com'
+      puts "> Running features on #{CloudTest::Util.colorize('browserstack.com', :light_blue)}"
       begin
         require 'browserstack/local'
       rescue LoadError

@@ -28,7 +28,7 @@ module CloudTest
       end
     end
     def self.start
-      puts '> Running features on lambdatest.com'
+      puts "> Running features on #{CloudTest::Util.colorize('lambdatest.com', :light_blue)}"
 
       register_driver(@caps, @config['user'], @config['key'], SERVER)
       Capybara.app_host = 'https://localhost.lambdatest.com:4504'
