@@ -17,8 +17,8 @@ module CloudTest
       @caps["javascriptEnabled"] = true
       @caps["webStorageEnabled"] = true
       @caps["acceptSslCerts"] = true
-
       @caps = merge_caps(@caps, @config, 'crossbrowsertesting')
+
       if !config.nil?
         start()
       end
