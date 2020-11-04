@@ -54,11 +54,14 @@ module CloudTest
       end
     end
 
-    def self.register_driver(capsArray, user, key, server)
-      # some debugging options
+    def self.register_driver(capsArray, user, key, server, options = nil)
       url =  "https://#{user.sub("@", "%40")}:#{key}@#{server}"
-      options = Selenium::WebDriver::Common::Options.new
-      options.add_option('w3c', false)
+      driver_config = {
+        :browser => :remote,
+        :url => url,
+        :desired_capabilities => capsArray,
+      }
+      driver_config[:options] = options if options
 
       if capsArray.has_key?('cloud_test_debug') and capsArray['cloud_test_debug']
         puts "Capybara.app_host = #{Capybara.app_host}"
@@ -66,12 +69,7 @@ module CloudTest
         list_these_caps capsArray
       end
       Capybara.register_driver :cloud_test do |app|
-        Capybara::Selenium::Driver.new(app,
-          :browser => :remote,
-          :url => url,
-          :desired_capabilities => capsArray,
-          :options => options,
-        )
+        Capybara::Selenium::Driver.new(app, **driver_config)
       end
     end
 

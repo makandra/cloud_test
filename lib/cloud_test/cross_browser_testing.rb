@@ -18,15 +18,19 @@ module CloudTest
       @caps["webStorageEnabled"] = true
       @caps["acceptSslCerts"] = true
       @caps = merge_caps(@caps, @config, 'crossbrowsertesting')
-
+      if @caps['browserName'] &.match?(/Chrome/i)
+        @options = Selenium::WebDriver::Chrome::Options.new
+        @options.add_option('w3c', false)
+      end
       if !config.nil?
         start()
       end
     end
+
     def self.start
       Capybara.server_port ||= 5555
       Capybara.app_host = "http://lvh.me:#{Capybara.server_port}"
-      register_driver(@caps, @config['user'], @config['key'], SERVER)
+      register_driver(@caps, @config['user'], @config['key'], SERVER, @options)
     end
 
     # update status
