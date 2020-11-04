@@ -19,7 +19,7 @@ module CloudTest
       #for all relevant config user input only allow an optional '@' for the cucumber_tag, then some letters, followed by
       # optional digits
       # this should enhance security
-      Regexp.new('^@?[A-z]+\d*$') =~ str
+      Regexp.new('^@?[A-z\-_]+\d*$') =~ str
     end
 
     # the optional parameter could be deleted, or used if someone does not want to put there credentials in the config
