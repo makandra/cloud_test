@@ -57,7 +57,7 @@ module CloudTest
     def self.register_driver(capsArray, user, key, server)
       # some debugging options
       url =  "https://#{user.sub("@", "%40")}:#{key}@#{server}"
-      options = WebDriver::Common::Options.new
+      options = Selenium::WebDriver::Common::Options.new
       options.add_option('w3c', false)
 
       if capsArray.has_key?('cloud_test_debug') and capsArray['cloud_test_debug']
