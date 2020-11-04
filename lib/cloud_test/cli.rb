@@ -56,9 +56,9 @@ module CloudTest
           end
           exit_status = wait_thr.value
           if exit_status == 0
-            puts "#{CloudTest::Util.colorize('Test on browser:', :green)} #{CloudTest::Util.colorize(browser_config_name, :light_blue)} #{CloudTest::Util.colorize('was successful', :green)}!"
+            puts CloudTest::Util.colorize("Test on browser: #{browser_config_name} was successful!", :green)
           else
-            puts "#{CloudTest::Util.colorize('Test on browser:', :red)} #{CloudTest::Util.colorize(browser_config_name, :light_blue)} #{CloudTest::Util.colorize('failed', :red)}!"
+            puts CloudTest::Util.colorize("Test on browser: #{browser_config_name} failed!", :red)
           end
         end
       }

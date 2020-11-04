@@ -9,7 +9,7 @@ module CloudTest
     def self.init(config=nil)
       @config = config || load_config('CBT_USERNAME', 'CBT_ACCESS_KEY')
 
-      puts "> Running features on #{CloudTest::Util.colorize('crossbrowsertesting.com', :light_blue)}"
+      puts '> Running features on crossbrowsertesting.com'
       @caps = Core.get_default_caps
 
       @caps['record_video'] = true
