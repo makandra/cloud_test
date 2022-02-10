@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
     spec.metadata["homepage_uri"] = "https://github.com/makandra/cloud_test"
     spec.metadata["source_code_uri"] = "https://github.com/makandra/cloud_test"
     spec.metadata["changelog_uri"] = "https://github.com/makandra/cloud_test/CHANGELOG.md"
+    spec.metadata["rubygems_mfa_required"] = 'true'
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
